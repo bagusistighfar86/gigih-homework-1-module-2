@@ -318,8 +318,9 @@ button.btn-trackInfo:hover {
 }
 
 .track-info-album {
+  margin-bottom: 100px;
   padding: 50px;
-  width: 80%;
+  width: 90%;
   height: 300px;
   background-color: #181818;
   border-radius: 20px;
