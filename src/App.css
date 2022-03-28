@@ -140,7 +140,7 @@ textarea:active {
   color: white;
 }
 
-button.btn-add-playlist {
+button.btn-select-playlist {
   background: #1ed760;
   padding: 10px 20px;
   border-radius: 10px;
@@ -148,7 +148,7 @@ button.btn-add-playlist {
   font-weight: bold;
 }
 
-button.btn-add-playlist:hover {
+button.btn-select-playlist:hover {
   cursor: pointer;
   opacity: 0.8;
 }
@@ -178,6 +178,10 @@ button.btn-add-playlist:hover {
   border-radius: 20px 20px 0 0;
   background-size: cover;
   background-position: center center;
+}
+
+.album-info{
+  margin-bottom: 50px;
 }
 
 .card-song:hover {
