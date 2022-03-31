@@ -42,13 +42,9 @@ header {
 .search-bar input {
   margin: 12px 0;
   width: 70%;
+  padding: 12px 20px;
   border-radius: 25px;
-  height: 40px;
   border: 1px solid #d1d1d1;
-}
-
-.search-bar input::placeholder {
-  padding-left: 20px;
 }
 
 .account {
@@ -153,25 +149,6 @@ button.btn-select-playlist:hover {
   opacity: 0.8;
 }
 
-.suggested-song {
-  margin-top: 25px;
-  margin-bottom: 100px;
-}
-
-.title-suggested-song p {
-  margin: 0;
-}
-
-.title-suggested-song h1 {
-  font-weight: bold;
-  margin: 5px 0;
-}
-
-.song {
-  box-sizing: border-box;
-  display: flex;
-}
-
 .album {
   /* background-color: chartreuse; */
   height: 250px;
@@ -184,63 +161,8 @@ button.btn-select-playlist:hover {
   margin-bottom: 50px;
 }
 
-.card-song:hover {
-  background-color: #353535;
-  cursor: pointer;
-}
-
-.album-payungteduh {
-  background-image: url(https://upload.wikimedia.org/wikipedia/id/5/50/Duniabatas.jpg);
-}
-
-.album-theovertunes {
-  background-image: url(https://i.scdn.co/image/ab67616d0000b27385905ceff03711d5da48dec9);
-}
-.album-nostress {
-  background-image: url(https://i.scdn.co/image/ab67616d0000b273e5e24b32651505e58e938762);
-}
-.album-tulus {
-  background-image: url(https://i.scdn.co/image/ab67616d0000b273b55d26c578e30129b0a7e86e);
-}
-
-.card-song {
-  background-color: #181818;
-  width: 25%;
-  height: 350px;
-  border-radius: 20px;
-  display: inline-block;
-  margin: 20px 10px;
-}
-
-.desc-song {
-  margin-left: 10px;
-  margin-top: 20px;
-}
-
-.card-song h4 {
-  margin: 0;
-  margin-bottom: 10px;
-  font-weight: bold;
-}
-
-.card-song p {
-  margin: 0;
-  color: #797979;
-}
-
-footer {
-  /* background-color: #e03030; */
-  background-color: #181818;
-  height: 70px;
-  width: 100%;
-  line-height: 70px;
-  text-align: center;
-}
-
 input,
-textarea,
-button,
-.card-song {
+textarea {
   box-shadow: rgba(48, 48, 48, 0) 0px 4px 6px -1px,
     rgb(48, 48, 48) 0px 2px 4px -1px;
 }
@@ -339,6 +261,81 @@ button.btn-trackInfo:hover {
 .album-detail {
   float: left;
 }
+
+/* Login */
+.Login {
+  
+  width: 15%;
+  height: 70px;
+  /* background-color: #4a3250; */
+  float: right;
+  text-align: right;
+}
+
+button.btn-login {
+  margin-right: 25px;
+  margin-top: 17px;
+  background: #0275d8;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  font-weight: bold;
+}
+
+button.btn-login:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+/* Homework Module 3 Sesi 2 */
+h3#song-title{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+p#artist-name{
+  margin: 0px;
+}
+
+.song-img {
+  margin-right: 50px;
+  float: left;
+}
+
+.song-list {
+  margin-bottom: 20px;
+  padding: 20px 50px;
+  width: 90%;
+  height: 65px;
+  background-color: #181818;
+  border-radius: 20px;
+  box-shadow: rgba(48, 48, 48, 0) 0px 4px 6px -1px,
+    rgb(48, 48, 48) 0px 2px 4px -1px;
+}
+
+.song-detail {
+  float: left;
+}
+
+a.btn-select-song {
+  margin-top: 10px;
+  float: right;
+  background: #1ed760;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  font-weight: bold;
+}
+
+a.btn-select-song:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+a button{
+  background: none;
+  border: none;
+} 
 
 /* Responsive */
 @media only screen and (max-width: 1300px) {

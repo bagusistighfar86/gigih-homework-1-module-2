@@ -3,9 +3,6 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
-const spotify_client_secret_key = process.env.REACT_APP_SPOTIFY_CLIENT_SECRET;
-const spotify_client_id_key = process.env.REACT_APP_REACT_APP_SPOTIFY_CLIENT_ID;
  
 ReactDOM.render(
   <React.StrictMode>
