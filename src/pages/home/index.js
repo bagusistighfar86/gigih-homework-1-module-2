@@ -1,64 +1,105 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../../components/Navbar/index";
 import Song from "../../components/Song/index";
+import song_dummy from "../../song_dummy";
+
+const Home = () => {
+  const [accessToken, setToken] = useState(window.location.hash
+    .substring(1, window.location.hash.length - 1)
+    .split("&")[0]
+    .split("=")[1])
+
+  const [search, setSearch] = useState("")
+  const [dataSearch, setDataSearch] = useState([])
+  const { result, selectedSongs } = useState([])
 
 
-class Home extends React.Component {
-  state = {
-    accessToken: window.location.hash
-      .substring(1, window.location.hash.length - 1)
-      .split("&")[0]
-      .split("=")[1],
-    search: "",
-    data: [],
-  };
-
-  getSpotify = () => {
+  const getSpotify = () => {
     fetch(
       "https://api.spotify.com/v1/search?q=" +
-      this.state.search +
+      search +
       "&type=track&limit=10&access_token=" +
-      this.state.accessToken
+      accessToken
     )
       .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        this.setState({
-          data: data.tracks.items,
-        });
+      .then((dataSong) => {
+        console.log(dataSong);
+        setDataSearch(dataSong.tracks.items);
       });
-  };
-
-  handleChange = (event) => {
-    this.setState({
-      search: event.target.value,
-    });
-  };
-  handleSubmit = (event) => {
-    event.preventDefault();
-    this.getSpotify();
-  };
-
-  render() {
-    return (
-      <>
-        <Navbar search={this.search} handleChange={this.handleChange} handleSubmit={this.handleSubmit} getSpotify={this.getSpotify} accessToken={this.state.accessToken} />
-        <div className="main">
-          <div className="container">
-            {this.state.data.map((item) => (
-              <Song key={item.id} data={item} />
-            ))}
-          </div>
-        </div>
-      </>
-    )
   }
-}
 
-// const Home = () => {
-//   return (
+  const handleChange = (event) => {
+    setSearch(event.target.value);
+    if(event.target.value === ""){
+      setDataSearch([])
+    }
+  };
 
-//   );
-// };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    getSpotify();
+  };
+
+  return (
+    <>
+      <Navbar search={search} handleChange={handleChange} handleSubmit={handleSubmit} getSpotify={getSpotify} accessToken={accessToken} />
+      <div className="main">
+        <div className="container">
+          {/* {selectedSongs.length > 0 &&
+            <>
+              <h1 className="text-white">Selected Songs</h1>
+              {selectedSongs.map((song, idx) => {
+                return (
+                  <Song
+                    key={song.uri}
+                    number={idx}
+                    title={song.name}
+                    artist={song.artists[0].name}
+                    album={song.album.name}
+                    uri={song.uri}
+                  />
+                )
+              })}
+            </>
+          } */}
+          {dataSearch.length > 0 &&
+            <>
+              <h1 className="text-white">Search Result</h1>
+              {dataSearch.map((item) => (
+                <Song
+                  key={item.id}
+                  title={item.name}
+                  artist={item.artists[0].name}
+                  album={item.album.name}
+                  uri={item.uri}
+                  data={item}
+                />
+              ))}
+            </>
+          }
+          {dataSearch.length === 0 &&
+            <>
+              <h1 className="text-white">Selected Songs</h1>
+              <h1 className="text-white">Recommended Songs</h1>
+              {song_dummy.map((item) => (
+                <Song
+                  key={item.id}
+                  title={item.name}
+                  artist={item.artists[0].name}
+                  album={item.album.name}
+                  uri={item.uri}
+                  data={item}
+                />
+              ))}
+            </>
+          }
+          {/* {data.map((item) => (
+            <Song key={item.id} data={item} />
+          ))} */}
+        </div>
+      </div>
+    </>
+  )
+};
 
 export default Home;
