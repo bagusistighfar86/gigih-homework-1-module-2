@@ -320,20 +320,20 @@ p#artist-name{
 a.btn-select-song {
   margin-top: 10px;
   float: right;
-  background: #1ed760;
-  padding: 10px 20px;
-  border-radius: 10px;
+  
   border: none;
   font-weight: bold;
 }
 
-a.btn-select-song:hover {
+a button:hover {
   cursor: pointer;
   opacity: 0.8;
 }
 
-a button{
-  background: none;
+a.btn-select-song button{
+  background: #1ed760;
+  border-radius: 10px;
+  padding: 10px 20px;
   border: none;
 } 
 

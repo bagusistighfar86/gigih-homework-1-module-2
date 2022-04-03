@@ -1,23 +1,20 @@
-import React, { useState } from "react";
+const Song = ({ uri, data,  selectedSong, setSelected }) => {
+  const generateButtonText = () => {
+        const selected = selectedSong.findIndex((data) => data.uri === uri)
+        if (selected !== -1) return 'Deselect'
+        return 'Select'
+    }
 
-const Song = ({ uri, data }) => {
-  // const [selectedSongs, setSelectedSongs] = useState([]);
-  // const generateButtonText = () => {
-  //       const selected = selectedSongs.findIndex((data) => data.uri === uri)
-  //       if (selected !== -1) return 'Deselect'
-  //       return 'Select'
-  //   }
-
-  //   const handleSelect = () => {
-  //       const selected = selectedSongs.findIndex((data) => data.uri === uri)
-  //       if (selected > -1) {
-  //           const newSelectedSongs = selectedSongs.filter((data) => data.uri !== uri)
-  //           setSelectedSongs(newSelectedSongs)
-  //       } else {
-  //           const newSelectedSongs = [...selectedSongs,data]
-  //           setSelectedSongs(newSelectedSongs)
-  //       }
-  //   }
+    const handleSelect = () => {
+        const selected = selectedSong.findIndex((data) => data.uri === uri)
+        if (selected > -1) {
+            const newSelectedSongs = selectedSong.filter((data) => data.uri !== uri)
+            setSelected(newSelectedSongs)
+        } else {
+            const newSelectedSongs = [...selectedSong,data]
+            setSelected(newSelectedSongs)
+        }
+    }
 
   return (
     <div className="song-list">
@@ -29,8 +26,8 @@ const Song = ({ uri, data }) => {
         <p id="artist-name">{data.album.artists[0].name}</p>
       </div>
       <a className="btn btn-select-song" href="#">
-        <button className="text-white" type="button" >
-          Select
+        <button className="text-white" type="button" onClick={handleSelect} >
+          {generateButtonText()}
         </button>
       </a>
     </div>

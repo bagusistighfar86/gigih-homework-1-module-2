@@ -1,7 +1,7 @@
 import Search from "../Search/index";
 import Login from "../Login/index";
 
-const Navbar = ({ search, accessToken, handleSubmit, handleChange, getSpotify }) => {
+const Navbar = ({ search, accessToken, handleSubmit, handleChange }) => {
   return (
     <header>
       <div className="left-logo">
@@ -10,22 +10,12 @@ const Navbar = ({ search, accessToken, handleSubmit, handleChange, getSpotify })
           alt=""
         />
       </div>
-      <Search search={search} handleChange={handleChange} handleSubmit={handleSubmit} getSpotify={getSpotify}/>
-        {/* <div className="search-bar">
-          <input type="text" placeholder="Search your music" />
-        </div> */}
-      {accessToken? "":<Login />}
-      {/* <div className="Login">
-        <a href="#">
-          <button class="btn btn-login text-white" type="button">
-            Login
-          </button>
-        </a>
-      </div> */}
-      {/* <div className="account text-white">
-        <div className="account-photo"></div>
-        <p>Halo, Bagus!</p>
-      </div> */}
+      <Search
+        search={search}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+      />
+      {accessToken ? "" : <Login />}
     </header>
   );
 };

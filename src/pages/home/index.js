@@ -11,7 +11,7 @@ const Home = () => {
 
   const [search, setSearch] = useState("")
   const [dataSearch, setDataSearch] = useState([])
-  const { result, selectedSongs } = useState([])
+  const [selectedSong, setSelected] = useState([]);
 
 
   const getSpotify = () => {
@@ -23,14 +23,14 @@ const Home = () => {
     )
       .then((res) => res.json())
       .then((dataSong) => {
-        console.log(dataSong);
+        // console.log(dataSong);
         setDataSearch(dataSong.tracks.items);
       });
   }
 
   const handleChange = (event) => {
     setSearch(event.target.value);
-    if(event.target.value === ""){
+    if (event.target.value === "") {
       setDataSearch([])
     }
   };
@@ -42,60 +42,50 @@ const Home = () => {
 
   return (
     <>
-      <Navbar search={search} handleChange={handleChange} handleSubmit={handleSubmit} getSpotify={getSpotify} accessToken={accessToken} />
+      <Navbar
+        search={search}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+        getSpotify={getSpotify}
+        accessToken={accessToken}
+      />
       <div className="main">
         <div className="container">
-          {/* {selectedSongs.length > 0 &&
-            <>
-              <h1 className="text-white">Selected Songs</h1>
-              {selectedSongs.map((song, idx) => {
-                return (
-                  <Song
-                    key={song.uri}
-                    number={idx}
-                    title={song.name}
-                    artist={song.artists[0].name}
-                    album={song.album.name}
-                    uri={song.uri}
-                  />
-                )
-              })}
-            </>
-          } */}
+          <h1 className="text-white">Selected Songs</h1>
+          {selectedSong.map((item) => (
+            <Song
+              uri={item.uri}
+              data={item}
+              selectedSong={selectedSong}
+              setSelected={setSelected}
+            />
+          ))}
           {dataSearch.length > 0 &&
             <>
               <h1 className="text-white">Search Result</h1>
               {dataSearch.map((item) => (
                 <Song
-                  key={item.id}
-                  title={item.name}
-                  artist={item.artists[0].name}
-                  album={item.album.name}
                   uri={item.uri}
                   data={item}
+                  selectedSong={selectedSong}
+                  setSelected={setSelected}
                 />
               ))}
             </>
           }
           {dataSearch.length === 0 &&
             <>
-              <h1 className="text-white">Selected Songs</h1>
               <h1 className="text-white">Recommended Songs</h1>
               {song_dummy.map((item) => (
                 <Song
-                  key={item.id}
-                  title={item.name}
-                  artist={item.artists[0].name}
-                  album={item.album.name}
                   uri={item.uri}
                   data={item}
+                  selectedSong={selectedSong}
+                  setSelected={setSelected}
                 />
               ))}
             </>
           }
-          {/* {data.map((item) => (
-            <Song key={item.id} data={item} />
-          ))} */}
         </div>
       </div>
     </>
