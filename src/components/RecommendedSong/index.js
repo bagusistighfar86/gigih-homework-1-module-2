@@ -1,23 +1,20 @@
+import song_dummy from "../../song_dummy"
 import Song from "../Song/index";
 
-const RecommendedSong = ({ selectedSong, setSelected, dataSearch }) => {
+const RecommendedSong = ({ selectedSong, setSelected }) => {
     return (
-        <>
-            {dataSearch.length > 0 &&
-                <>
-                    <h1 className="text-white">Search Result</h1>
-                    {dataSearch.map((item) => (
-                    <Song
-                        key={item.id}
-                        uri={item.uri}
-                        data={item}
-                        selectedSong={selectedSong}
-                        setSelected={setSelected}
-                    />
-                    ))}
-                </>
-            }
-        </>
+        <div className="CreatePlaylist home-section">
+            <h1 className="text-white">Recommended Songs</h1>
+            {song_dummy.map((item) => (
+                <Song
+                    key={item.id}
+                    uri={item.uri}
+                    data={item}
+                    selectedSong={selectedSong}
+                    setSelected={setSelected}
+                />
+            ))}
+        </div>
     )
 }
 

@@ -5,7 +5,6 @@ import SearchResult from "../../components/SearchResult";
 import RecommendedSong from "../../components/RecommendedSong";
 import CreatePlaylist from "../../components/CreatePlaylist";
 import ListPlaylist from "../../components/ListPlaylist";
-import axios from 'axios';
 
 const Home = () => {
   const [accessToken, setToken] = useState(window.location.hash
@@ -57,10 +56,13 @@ const Home = () => {
           <CreatePlaylist
             selectedSong={selectedSong}
             setSelected={setSelected}
-            dataSearch={dataSearch}
             accessToken={accessToken}
           />
-          <ListPlaylist/>
+          <ListPlaylist
+            selectedSong={selectedSong}
+            setSelected={setSelected}
+            accessToken={accessToken}
+          />
           <SelectedSong 
             selectedSong={selectedSong}
             setSelected={setSelected}
@@ -73,7 +75,6 @@ const Home = () => {
           <RecommendedSong
             selectedSong={selectedSong}
             setSelected={setSelected}
-            dataSearch={dataSearch}
           />
         </div>
       </div>

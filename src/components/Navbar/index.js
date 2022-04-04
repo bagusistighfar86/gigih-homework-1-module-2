@@ -1,7 +1,7 @@
 import Search from "../Search/index";
 import Login from "../Login/index";
 
-const Navbar = ({ search, accessToken, handleSubmit, handleChange }) => {
+const Navbar = ({ search, accessToken, handleSubmit, handleChangeSearch }) => {
   return (
     <header>
       <div className="left-logo">
@@ -12,7 +12,7 @@ const Navbar = ({ search, accessToken, handleSubmit, handleChange }) => {
       </div>
       <Search
         search={search}
-        handleChange={handleChange}
+        handleChangeSearch={handleChangeSearch}
         handleSubmit={handleSubmit}
       />
       {accessToken ? "" : <Login />}

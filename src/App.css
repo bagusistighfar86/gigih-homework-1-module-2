@@ -293,10 +293,6 @@ h3#song-title{
   margin-bottom: 10px;
 }
 
-p#artist-name{
-  margin: 0px;
-}
-
 .song-img {
   margin-right: 50px;
   float: left;
@@ -339,7 +335,7 @@ a.btn-select-song button{
 
 /* Homework Module 3 Sesi 3 */
 .home-section{
-  margin-bottom: 100px;
+  margin-bottom: 10 0px;
 }
 
 a.btn-add-playlist {
@@ -351,6 +347,80 @@ a.btn-add-playlist {
 }
 
 a.btn-add-playlist button{
+  background: #1ed760;
+  border-radius: 10px;
+  padding: 10px 20px;
+  border: none;
+} 
+
+h3#playlist-title{
+  margin-top: 10px;
+  margin-bottom: 10px;  
+}
+
+p#artist-name{
+  margin: 0px;
+}
+
+.playlist-img {
+  margin-right: 50px;
+  float: left;
+}
+
+.playlist-list {
+  margin-bottom: 20px;
+  padding: 20px 50px;
+  width: 94%;
+  height: 65px;
+  background-color: #181818;
+  border-radius: 20px;
+  box-shadow: rgba(48, 48, 48, 0) 0px 4px 6px -1px,
+    rgb(48, 48, 48) 0px 2px 4px -1px;
+}
+
+.playlist-detail {
+  line-height: 20px;
+  float: left;
+}
+
+a.btn-select-playlist {
+  padding: 30px;
+  margin-top: -15px;
+  float: right;
+  border: none;
+  font-weight: bold;
+}
+
+a.btn-select-playlist button{
+  background: #1ed760;
+  border-radius: 10px;
+  padding: 10px 20px;
+  border: none;
+} 
+
+.headerListPlaylist{
+  margin-bottom: 30px;
+}
+
+
+.ListPlaylist{
+  margin-top: 100px;
+}
+
+.ListPlaylist h1{
+  display: inline;
+}
+
+a.btn-get-playlist {
+  display: inline;
+  margin-top: 10px;
+  margin-right: 50px;
+  float: right;
+  border: none;
+  font-weight: bold;
+}
+
+a.btn-get-playlist button{
   background: #1ed760;
   border-radius: 10px;
   padding: 10px 20px;
