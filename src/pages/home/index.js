@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar/index";
-import Song from "../../components/Song/index";
-import song_dummy from "../../song_dummy";
+import SelectedSong from "../../components/SelectedSong/index";
+import SearchResult from "../../components/SearchResult";
+import RecommendedSong from "../../components/RecommendedSong";
+import CreatePlaylist from "../../components/CreatePlaylist";
+import ListPlaylist from "../../components/ListPlaylist";
+import axios from 'axios';
 
 const Home = () => {
   const [accessToken, setToken] = useState(window.location.hash
@@ -12,7 +16,6 @@ const Home = () => {
   const [search, setSearch] = useState("")
   const [dataSearch, setDataSearch] = useState([])
   const [selectedSong, setSelected] = useState([]);
-
 
   const getSpotify = () => {
     fetch(
@@ -28,7 +31,7 @@ const Home = () => {
       });
   }
 
-  const handleChange = (event) => {
+  const handleChangeSearch = (event) => {
     setSearch(event.target.value);
     if (event.target.value === "") {
       setDataSearch([])
@@ -44,48 +47,34 @@ const Home = () => {
     <>
       <Navbar
         search={search}
-        handleChange={handleChange}
+        handleChangeSearch={handleChangeSearch}
         handleSubmit={handleSubmit}
         getSpotify={getSpotify}
         accessToken={accessToken}
       />
       <div className="main">
         <div className="container">
-          <h1 className="text-white">Selected Songs</h1>
-          {selectedSong.map((item) => (
-            <Song
-              uri={item.uri}
-              data={item}
-              selectedSong={selectedSong}
-              setSelected={setSelected}
-            />
-          ))}
-          {dataSearch.length > 0 &&
-            <>
-              <h1 className="text-white">Search Result</h1>
-              {dataSearch.map((item) => (
-                <Song
-                  uri={item.uri}
-                  data={item}
-                  selectedSong={selectedSong}
-                  setSelected={setSelected}
-                />
-              ))}
-            </>
-          }
-          {dataSearch.length === 0 &&
-            <>
-              <h1 className="text-white">Recommended Songs</h1>
-              {song_dummy.map((item) => (
-                <Song
-                  uri={item.uri}
-                  data={item}
-                  selectedSong={selectedSong}
-                  setSelected={setSelected}
-                />
-              ))}
-            </>
-          }
+          <CreatePlaylist
+            selectedSong={selectedSong}
+            setSelected={setSelected}
+            dataSearch={dataSearch}
+            accessToken={accessToken}
+          />
+          <ListPlaylist/>
+          <SelectedSong 
+            selectedSong={selectedSong}
+            setSelected={setSelected}
+          />
+          <SearchResult
+            selectedSong={selectedSong}
+            setSelected={setSelected}
+            dataSearch={dataSearch}
+          />
+          <RecommendedSong
+            selectedSong={selectedSong}
+            setSelected={setSelected}
+            dataSearch={dataSearch}
+          />
         </div>
       </div>
     </>

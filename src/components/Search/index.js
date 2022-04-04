@@ -1,6 +1,4 @@
-
-
-const Search = ({ search, handleSubmit, handleChange }) => {
+const Search = ({ search, handleSubmit, handleChangeSearch }) => {
     return (
         <div className="search-bar">
             <form className='search' onSubmit={handleSubmit}>
@@ -10,7 +8,7 @@ const Search = ({ search, handleSubmit, handleChange }) => {
                     placeholder="Search your music"
                     name="txt"
                     value={search}
-                    onChange={handleChange}
+                    onChange={handleChangeSearch}
                 ></input>
             </form>
         </div>

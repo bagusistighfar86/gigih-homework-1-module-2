@@ -305,7 +305,7 @@ p#artist-name{
 .song-list {
   margin-bottom: 20px;
   padding: 20px 50px;
-  width: 90%;
+  width: 94%;
   height: 65px;
   background-color: #181818;
   border-radius: 20px;
@@ -331,6 +331,26 @@ a button:hover {
 }
 
 a.btn-select-song button{
+  background: #1ed760;
+  border-radius: 10px;
+  padding: 10px 20px;
+  border: none;
+} 
+
+/* Homework Module 3 Sesi 3 */
+.home-section{
+  margin-bottom: 100px;
+}
+
+a.btn-add-playlist {
+  margin-top: 10px;
+  float: right;
+  
+  border: none;
+  font-weight: bold;
+}
+
+a.btn-add-playlist button{
   background: #1ed760;
   border-radius: 10px;
   padding: 10px 20px;
