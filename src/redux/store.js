@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import authReducer from "./slices/tokenSlice"
+import tokenReducer from "./slices/tokenSlice"
 
 export default configureStore({
   reducer: {
-    auth: authReducer,
+    auth: tokenReducer,
   },
 });

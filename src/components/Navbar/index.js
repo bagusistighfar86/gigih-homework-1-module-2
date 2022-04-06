@@ -1,6 +1,7 @@
 import Search from "../Search/index";
 import Login from "../Login/index";
 import { useSelector } from "react-redux";
+import Home from "../../pages/home";
 
 const Navbar = ({ search, handleSubmit, handleChangeSearch }) => {
   const accessToken = useSelector (state => state.auth.token)

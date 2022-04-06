@@ -8,8 +8,8 @@ import ListPlaylist from "../../components/ListPlaylist";
 import { useSelector } from "react-redux";
 
 const Home = () => {
-  const accessToken = useSelector((state) => state.auth.accessToken);
-  
+  const accessToken = useSelector((state) => state.auth.token)
+
   const [search, setSearch] = useState("")
   const [dataSearch, setDataSearch] = useState([])
   const [selectedSong, setSelected] = useState([]);
@@ -18,8 +18,9 @@ const Home = () => {
     fetch(
       "https://api.spotify.com/v1/search?q=" +
       search +
-      "&type=track&limit=10&access_token=" +
-      accessToken
+      "&access_token=" +
+      accessToken +
+      "&type=track"
     )
       .then((res) => res.json())
       .then((dataSong) => {
@@ -46,7 +47,6 @@ const Home = () => {
         search={search}
         handleChangeSearch={handleChangeSearch}
         handleSubmit={handleSubmit}
-        getSpotify={getSpotify}
       />
       <div className="main">
         <div className="container">
