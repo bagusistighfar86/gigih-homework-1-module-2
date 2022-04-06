@@ -1,7 +1,10 @@
 import Search from "../Search/index";
 import Login from "../Login/index";
+import { useSelector } from "react-redux";
 
-const Navbar = ({ search, accessToken, handleSubmit, handleChangeSearch }) => {
+const Navbar = ({ search, handleSubmit, handleChangeSearch }) => {
+  const accessToken = useSelector (state => state.auth.token)
+  
   return (
     <header>
       <div className="left-logo">

@@ -5,13 +5,11 @@ import SearchResult from "../../components/SearchResult";
 import RecommendedSong from "../../components/RecommendedSong";
 import CreatePlaylist from "../../components/CreatePlaylist";
 import ListPlaylist from "../../components/ListPlaylist";
+import { useSelector } from "react-redux";
 
 const Home = () => {
-  const [accessToken, setToken] = useState(window.location.hash
-    .substring(1, window.location.hash.length - 1)
-    .split("&")[0]
-    .split("=")[1])
-
+  const accessToken = useSelector((state) => state.auth.accessToken);
+  
   const [search, setSearch] = useState("")
   const [dataSearch, setDataSearch] = useState([])
   const [selectedSong, setSelected] = useState([]);
@@ -49,19 +47,16 @@ const Home = () => {
         handleChangeSearch={handleChangeSearch}
         handleSubmit={handleSubmit}
         getSpotify={getSpotify}
-        accessToken={accessToken}
       />
       <div className="main">
         <div className="container">
           <CreatePlaylist
             selectedSong={selectedSong}
             setSelected={setSelected}
-            accessToken={accessToken}
           />
           <ListPlaylist
             selectedSong={selectedSong}
             setSelected={setSelected}
-            accessToken={accessToken}
           />
           <SelectedSong 
             selectedSong={selectedSong}

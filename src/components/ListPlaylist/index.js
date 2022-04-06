@@ -1,8 +1,11 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Playlist from '../Playlist';
+import { useSelector } from "react-redux";
 
-const ListPlaylist = ({ selectedSong, setSelected, accessToken }) => {
+const ListPlaylist = ({ selectedSong, setSelected }) => {
+    const accessToken = useSelector (state => state.auth.token)
+    
     const [playlistsData, setPlaylists] = useState([])
 
     const getListPlaylist = async () => {

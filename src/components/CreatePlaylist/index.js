@@ -1,7 +1,10 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { useSelector } from "react-redux";
 
-const CreatePlaylist = ({ selectedSong, setSelected, accessToken }) => {
+const CreatePlaylist = ({ selectedSong, setSelected }) => {
+    const accessToken = useSelector (state => state.auth.token)
+    
     const [playlistForm, setPlaylistForm] = useState({
         title: '',
         description: ''

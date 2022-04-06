@@ -16,20 +16,4 @@ const Login = () => {
     )
 }
 
-
-
-// class Login extends Component {
-//     render() {
-//         return (
-//             <div className="Login">
-//                 <a href={url}>
-//                     <button className="btn btn-login text-white" type="button">
-//                         Login
-//                     </button>
-//             </a>
-//             </div>
-//         )
-//     }
-// }
-
 export default Login;
