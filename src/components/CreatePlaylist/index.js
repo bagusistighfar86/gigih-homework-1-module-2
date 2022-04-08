@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from "react-redux";
 
 const CreatePlaylist = ({ selectedSong, setSelected }) => {
-    const accessToken = useSelector (state => state.auth.token)
+    const accessToken = useSelector (state => state.auth.accessToken)
     
     const [playlistForm, setPlaylistForm] = useState({
         title: '',
@@ -106,7 +106,7 @@ const CreatePlaylist = ({ selectedSong, setSelected }) => {
             <h1 className="text-white">Create Playlist</h1>
             <form onSubmit={handleSubmitPlaylist}>
                 <div className="form-group">
-                    <label htmlFor="title" className="text-white"></label>
+                    <label htmlFor="title" className="text-white">Title</label>
                     <input type="text" id="title" name="title" placeholder="Enter playlist tittle" onChange={handleChangeForm} />
                     {errors.title &&
                         <p className='error-title-msg text-white'>Minimum 10 huruf</p>

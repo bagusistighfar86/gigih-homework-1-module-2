@@ -4,7 +4,7 @@ import Playlist from '../Playlist';
 import { useSelector } from "react-redux";
 
 const ListPlaylist = ({ selectedSong, setSelected }) => {
-    const accessToken = useSelector (state => state.auth.token)
+    const accessToken = useSelector (state => state.auth.accessToken)
     
     const [playlistsData, setPlaylists] = useState([])
 

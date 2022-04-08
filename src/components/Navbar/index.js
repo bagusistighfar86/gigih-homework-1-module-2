@@ -1,12 +1,10 @@
 import Search from "../Search/index";
-import Login from "../Login/index";
-import { useSelector } from "react-redux";
-import Home from "../../pages/home";
+import CreatePlaylistNav from "./NavPage/createPlaylistNav";
 
 const Navbar = ({ search, handleSubmit, handleChangeSearch }) => {
-  const accessToken = useSelector (state => state.auth.token)
   
   return (
+    
     <header>
       <div className="left-logo">
         <img
@@ -19,7 +17,7 @@ const Navbar = ({ search, handleSubmit, handleChangeSearch }) => {
         handleChangeSearch={handleChangeSearch}
         handleSubmit={handleSubmit}
       />
-      {accessToken ? "" : <Login />}
+      <CreatePlaylistNav />
     </header>
   );
 };

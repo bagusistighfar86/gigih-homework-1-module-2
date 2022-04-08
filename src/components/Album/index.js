@@ -1,5 +1,3 @@
-import React, { useEffect } from "react";
-
 const Album = ({ data }) => {
   return (
     <div className="track-info-album">

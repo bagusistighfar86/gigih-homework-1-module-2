@@ -1,15 +1,24 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
-    token:  window.location.hash
-    .substring(1, window.location.hash.length - 1)
-    .split("&")[0]
-    .split("=")[1]
+    accessToken : localStorage.getItem("access_token") ?? ""
 }
 
 const tokenSlice = createSlice({
     name: "auth",
     initialState,
-    reducers: {}
+    reducers: {
+            setAccessToken: (state, action) => {
+            const { accessToken } = action.payload;
+            localStorage.setItem("access_token", accessToken);
+            state.accessToken = accessToken;
+        },
+            setRemoveAccessToken: (state) => {
+            state.accessToken = "";
+            localStorage.removeItem("access_token");
+        },
+    }
 })
+
+export const { setAccessToken, setRemoveAccessToken } = tokenSlice.actions;
 
 export default tokenSlice.reducer;

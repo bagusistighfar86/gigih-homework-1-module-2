@@ -265,7 +265,7 @@ button.btn-trackInfo:hover {
 /* Login */
 .Login {
   
-  width: 15%;
+  /* width: 15%; */
   height: 70px;
   /* background-color: #4a3250; */
   float: right;
@@ -426,6 +426,16 @@ a.btn-get-playlist button{
   padding: 10px 20px;
   border: none;
 } 
+
+/* Homework Module 4 Sesi 2 */
+.NavPage{
+  list-style-type: none;
+  font-size: 20px;
+  float: right;
+  margin-right: 30px;
+}
+
+/* .Nav */
 
 /* Responsive */
 @media only screen and (max-width: 1300px) {

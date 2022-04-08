@@ -1,18 +1,20 @@
-import React, { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar/index";
 import SelectedSong from "../../components/SelectedSong/index";
 import SearchResult from "../../components/SearchResult";
 import RecommendedSong from "../../components/RecommendedSong";
 import CreatePlaylist from "../../components/CreatePlaylist";
 import ListPlaylist from "../../components/ListPlaylist";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 
 const Home = () => {
-  const accessToken = useSelector((state) => state.auth.token)
+  const accessToken = useSelector((state) => state.auth.accessToken)
 
   const [search, setSearch] = useState("")
   const [dataSearch, setDataSearch] = useState([])
   const [selectedSong, setSelected] = useState([]);
+
+  console.log("masuk Home")
 
   const getSpotify = () => {
     fetch(
