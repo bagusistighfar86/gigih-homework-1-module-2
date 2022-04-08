@@ -14,12 +14,10 @@ const LoginPage = () => {
     const dispatch = useDispatch()
     const history = useHistory()
 
-    const accessToken = useSelector((state) => state.auth.accessToken);
+    const accessToken = useSelector((state) => state.token.accessToken);
 
     const handleLogin = () => {
-        window.open(
-            window.location.replace(url)
-        )
+        window.location.replace(url)
     }
 
     useEffect(() => {
@@ -34,13 +32,12 @@ const LoginPage = () => {
         .split("=")[1];
 
     if (accessTokenfromURL) {
-        dispatch(setAccessToken({ accesToken: accessTokenfromURL }));
+        dispatch(setAccessToken({ accessToken: accessTokenfromURL }));
         history.push({
             pathname: "/create-playlist",
         });
     }
 
-    console.log(accessTokenfromURL)
     return (
         <div className="Login">
             <a>

@@ -3,6 +3,6 @@ import tokenReducer from "./slices/tokenSlice"
 
 export default configureStore({
   reducer: {
-    auth: tokenReducer,
+    token: tokenReducer,
   },
 });

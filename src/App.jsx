@@ -16,7 +16,7 @@ const App = () => {
               <Route exact path="/">
                 <LoginPage />
               </Route>
-              <PrivateRoute path="/create-playlist" component={Home}></PrivateRoute>
+              <PrivateRoute path="/create-playlist" component={Home} />
             </Switch>
           </Router>
         </Provider>

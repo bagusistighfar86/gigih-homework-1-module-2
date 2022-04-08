@@ -5,7 +5,7 @@
 // import Home from "../../../pages/home";
 
 // const CreatePlaylistNav = () => {
-//     const accessToken = useSelector (state => state.auth.accessToken)
+//     const accessToken = useSelector (state => state.token.accessToken)
     
 //     const AUTH_URL = 'https://accounts.spotify.com/authorize'
 //     const spotify_client_id = process.env.REACT_APP_SPOTIFY_CLIENT_ID;

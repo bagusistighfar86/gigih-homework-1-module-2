@@ -8,13 +8,11 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 
 const Home = () => {
-  const accessToken = useSelector((state) => state.auth.accessToken)
+  const accessToken = useSelector((state) => state.token.accessToken)
 
   const [search, setSearch] = useState("")
   const [dataSearch, setDataSearch] = useState([])
   const [selectedSong, setSelected] = useState([]);
-
-  console.log("masuk Home")
 
   const getSpotify = () => {
     fetch(
@@ -45,6 +43,7 @@ const Home = () => {
 
   return (
     <>
+    
       <Navbar
         search={search}
         handleChangeSearch={handleChangeSearch}

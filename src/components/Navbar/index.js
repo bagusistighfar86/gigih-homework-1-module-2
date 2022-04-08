@@ -1,8 +1,10 @@
 import Search from "../Search/index";
-import CreatePlaylistNav from "./NavPage/createPlaylistNav";
-
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import LogoutButton from "./Logout";
 const Navbar = ({ search, handleSubmit, handleChangeSearch }) => {
-  
+  const dispatch = useDispatch()
+  const accessToken = useSelector (state => state.token.accessToken)
   return (
     
     <header>
@@ -17,7 +19,12 @@ const Navbar = ({ search, handleSubmit, handleChangeSearch }) => {
         handleChangeSearch={handleChangeSearch}
         handleSubmit={handleSubmit}
       />
-      <CreatePlaylistNav />
+      {accessToken ? 
+        (<LogoutButton />) 
+        : 
+        ( <p></p> )
+      }
+
     </header>
   );
 };

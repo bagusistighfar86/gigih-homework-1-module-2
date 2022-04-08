@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from "react-redux";
 
 const CreatePlaylist = ({ selectedSong, setSelected }) => {
-    const accessToken = useSelector (state => state.auth.accessToken)
+    const accessToken = useSelector (state => state.token.accessToken)
     
     const [playlistForm, setPlaylistForm] = useState({
         title: '',
