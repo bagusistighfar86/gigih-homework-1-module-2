@@ -1,23 +1,27 @@
-import { createSlice } from "@reduxjs/toolkit";
+// Libraries
+import { createSlice } from '@reduxjs/toolkit';
+
 const initialState = {
-    accessToken : localStorage.getItem("access_token") ?? ""
-}
+  accessToken: localStorage.getItem('access_token') ?? '',
+};
 
 const tokenSlice = createSlice({
-    name: "token",
-    initialState,
-    reducers: {
-            setAccessToken: (state, action) => {
-            const { accessToken } = action.payload;
-            localStorage.setItem("access_token", accessToken);
-            state.accessToken = accessToken;
-        },
-            setRemoveAccessToken: (state) => {
-            state.accessToken = "";
-            localStorage.removeItem("access_token");
-        },
-    }
-})
+  name: 'token',
+  initialState,
+  reducers: {
+    setAccessToken: (state, action) => {
+      const { accessToken } = action.payload;
+      localStorage.setItem('access_token', accessToken);
+      // eslint-disable-next-line no-param-reassign
+      state.accessToken = accessToken;
+    },
+    setRemoveAccessToken: (state) => {
+      // eslint-disable-next-line no-param-reassign
+      state.accessToken = '';
+      localStorage.removeItem('access_token');
+    },
+  },
+});
 
 export const { setAccessToken, setRemoveAccessToken } = tokenSlice.actions;
 

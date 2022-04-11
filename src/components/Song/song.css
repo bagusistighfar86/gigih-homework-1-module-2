@@ -1,0 +1,36 @@
+.song-img {
+    width: 5%;
+}
+
+.song-detail {
+    width: 25%;
+}
+
+td.song-album {
+    width: 50%;
+}
+
+button.btn-select-song  {
+    background: #1ed760;
+    border-radius: 10px;
+    padding: 10px 20px;
+    border: none;
+    transition: ease 0.3s;
+}
+
+button.btn-select-song:hover  {
+    cursor: pointer;
+    background: #17a047
+}
+
+tr.song{
+    /* background-color: #212121; */
+    border-radius: 10px;
+    transition: ease 0.5s;
+}
+
+tr.song:hover {
+    transform: scale(1.01);
+    background-color: #212121;
+    cursor: pointer;
+}

@@ -1,27 +1,32 @@
-import './App.css';
-import Home from "./pages/home/index";
-import {Provider} from 'react-redux'
-import store from './redux/store';
-import LoginPage from './pages/loginPage';
-import PrivateRoute from './components/privateRoute';
+// Libraries
+import React from 'react';
+import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import store from './redux/store';
+import PrivateRoute from './components/privateRoute';
 
-const App = () => {
+// CSS
+import './App.css';
 
-    return (
-      <div className="App">
-        <Provider store={store}>
-          <Router>
-            <Switch>
-              <Route exact path="/">
-                <LoginPage />
-              </Route>
-              <PrivateRoute path="/create-playlist" component={Home} />
-            </Switch>
-          </Router>
-        </Provider>
-      </div>
-    );
+// Import Component
+import Home from './pages/home/index';
+import LoginPage from './pages/loginPage';
+
+function App() {
+  return (
+    <div className="App">
+      <Provider store={store}>
+        <Router>
+          <Switch>
+            <Route exact path="/">
+              <LoginPage />
+            </Route>
+            <PrivateRoute path="/create-playlist" component={Home} />
+          </Switch>
+        </Router>
+      </Provider>
+    </div>
+  );
 }
 
 export default App;

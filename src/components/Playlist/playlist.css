@@ -1,0 +1,62 @@
+h5.playlist-title{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 14px;  
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+p.display-name{
+    margin-bottom: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 12px;
+}
+
+button.btn-add-to-playlist{
+    background: #1ed760;
+    border-radius: 10px;
+    padding: 2px 5px;
+    border: none;
+    font-weight: bold;
+    font-size: 12px;
+    transition: ease 0.5s;
+}
+
+button.btn-add-to-playlist:hover{
+    background: #17a047;
+} 
+
+.card-playlist{
+    border: none;
+    margin: 30px 12px;
+    background-color: #212121;
+    border-radius: 10px;
+    box-shadow: rgba(48, 48, 48, 0) 0px 4px 6px -1px,
+    rgb(48, 48, 48) 0px 2px 4px -1px;
+    transition: ease 0.5s;
+}
+
+.card-playlist:hover {
+    transform: scale(1.1);
+    background-color: #353535;
+    cursor: pointer;
+}
+
+.card-head{
+    overflow: hidden;
+}
+
+
+.card-head{
+    height: 130px;
+}
+
+.card-head-img{
+    width: 85%;
+    height: 85%;
+    overflow: hidden;
+}
+

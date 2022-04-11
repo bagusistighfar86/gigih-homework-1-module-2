@@ -1,0 +1,20 @@
+.headerListPlaylist{
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.ListPlaylist{
+  margin-top: 100px;
+}
+
+button.btn-get-playlist{
+  background: #1ed760;
+  border-radius: 10px;
+  padding: 10px 20px;
+  border: none;
+  transition: ease 0.3s;
+} 
+
+button.btn-get-playlist:hover{
+  background: #17a047;
+} 

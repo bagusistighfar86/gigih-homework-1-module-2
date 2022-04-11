@@ -1,0 +1,13 @@
+.sidebar-content{
+    margin-top: 100px;
+}
+
+.sideNav{
+    color: #797979;
+}
+
+.sideNav:hover{
+    color: white;
+    cursor: pointer;
+    transition: linear 0.2s;
+}
