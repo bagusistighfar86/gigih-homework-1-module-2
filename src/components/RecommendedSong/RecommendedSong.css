@@ -1,3 +1,25 @@
+.header-table{
+    font-weight: bold;
+    border-bottom: 1px solid #353535;
+    height: 40px;
+}
+
+.index{
+    flex-basis: 50px;
+}
+
+.title{
+    flex-basis: 460px;
+}
+
+.album {
+    flex-basis: 700px;
+}
+
+.duration{
+    flex-basis: 150px;
+}
+
 thead tr{
     border-bottom: 1px solid #353535;
 }

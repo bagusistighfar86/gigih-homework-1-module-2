@@ -30,7 +30,7 @@ function Playlist({ selectedSong, setSelected, data }) {
         if (selectedSong !== []) {
           const res = await addSongsToPlaylist(playlistId);
           if (res) {
-            console.log('BerhasilUpload');
+            console.log('Berhasil Upload');
             setSelected([]);
             alert(`Song has been added to playlist ${data.name}`);
           }

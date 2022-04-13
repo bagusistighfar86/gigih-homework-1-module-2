@@ -1,13 +1,21 @@
+.index{
+    flex-basis: 50px;
+}
+
+.song-title-col{
+    flex-basis: 460px;
+}
+
+.song-album {
+    flex-basis: 700px;
+}
+
+.duration{
+    flex-basis: 150px;
+}
+
 .song-img {
-    width: 5%;
-}
-
-.song-detail {
-    width: 25%;
-}
-
-td.song-album {
-    width: 50%;
+    margin-right: 20px;
 }
 
 button.btn-select-song  {
@@ -23,13 +31,13 @@ button.btn-select-song:hover  {
     background: #17a047
 }
 
-tr.song{
+.song{
     /* background-color: #212121; */
     border-radius: 10px;
     transition: ease 0.5s;
 }
 
-tr.song:hover {
+.song:hover {
     transform: scale(1.01);
     background-color: #212121;
     cursor: pointer;

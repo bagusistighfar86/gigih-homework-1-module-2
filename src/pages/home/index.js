@@ -5,6 +5,8 @@ import { useSelector } from 'react-redux';
 // CSS
 import './home.css';
 
+import guitarBoy from '../../assets/img/guitar-boy.png';
+
 // Components
 import Navbar from '../../components/Navbar/index';
 import Sidebar from '../../components/Sidebar';
@@ -56,13 +58,47 @@ function Home() {
           handleChangeSearch={handleChangeSearch}
           handleSubmit={handleSubmit}
         />
-        <div className="main d-flex flex-column overflow-hidden">
+        <div className="main d-flex flex-column overflow-hidden text-white">
           <div className="row">
             <div className="col-2 sidebar">
               <Sidebar className="" />
             </div>
             <div className="col-10">
               <div className="content ps-3 pe-3" style={{ height: '100vh' }}>
+                <div className="main-header reveal">
+                  <div
+                    className="upgrade-box bg-danger text-white d-flex align-items-center"
+                    data-aos="fade-up"
+                    data-aos-delay="100"
+                  >
+                    <div className="upgrade-box-img w-50">
+                      <img src={guitarBoy} alt="guitarBoy" className="guitarBoy" width="500px" height="500px"></img>
+                    </div>
+                    <div className="upgrade-box-content w-50 m-5 text-start">
+                      <h1 className="m-0 p-0">Hello, Bagus!</h1>
+                      <p className="fs-5">Welcome to spotify</p>
+                      <button type="button" className="btn btn-upgrade-premium">Upgrade to Premium !</button>
+                    </div>
+                  </div>
+                  <div
+                    className="event"
+                    data-aos="fade-up"
+                    data-aos-delay="500"
+                  >
+                  </div>
+                  <div
+                    className="yourFavorite bg-primary"
+                    data-aos="fade-up"
+                    data-aos-delay="1000"
+                  >
+                  </div>
+                  <div
+                    className="topTrending"
+                    data-aos="fade-up"
+                    data-aos-delay="1500"
+                  >
+                  </div>
+                </div>
                 <CreatePlaylist
                   selectedSong={selectedSong}
                   setSelected={setSelected}

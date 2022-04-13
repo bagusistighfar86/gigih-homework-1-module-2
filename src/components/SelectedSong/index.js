@@ -6,33 +6,29 @@ import Song from '../Song/index';
 
 function SelectedSong({ selectedSong, setSelected }) {
   return (
-    <div className="SelectedSong">
+    <div className="SelectedSong mb-5">
       <h1 className="text-white">Selected Song</h1>
-      <table className="table table-borderless text-white">
-        <thead>
-          {selectedSong.length !== 0 && (
-            <tr>
-              <th scope="col" className="pe-3">#</th>
-              <th scope="col" colSpan={2}>Title</th>
-              <th scope="col">Album</th>
-              <th scope="col">Duration</th>
-              <th scope="col">Select Song</th>
-            </tr>
-          )}
-        </thead>
-        <tbody>
-          {selectedSong.map((item, index) => (
-            <Song
-              key={item.id}
-              index={index}
-              uri={item.uri}
-              data={item}
-              selectedSong={selectedSong}
-              setSelected={setSelected}
-            />
-          ))}
-        </tbody>
-      </table>
+      {selectedSong.length !== 0 && (
+        <div className="header-table mb-3 d-flex text-white">
+          <p className="index">#</p>
+          <p className="title">Title</p>
+          <p className="album">Album</p>
+          <p className="duration">Duration</p>
+          <p className="selectSong">Select Song</p>
+        </div>
+      )}
+      <div className="songMap">
+        {selectedSong.map((item, index) => (
+          <Song
+            key={item.id}
+            index={index}
+            uri={item.uri}
+            data={item}
+            selectedSong={selectedSong}
+            setSelected={setSelected}
+          />
+        ))}
+      </div>
     </div>
   );
 }

@@ -31,21 +31,23 @@ function Song({
   };
 
   return (
-    <tr className="song">
-      <th className="align-middle" scope="row">{index + 1}</th>
-      <td className="song-img"><img className="img-song bg-primary" src={data.album.images[2].url} alt="Song Cover" /></td>
-      <td className="align-middle song-detail">
-        <p className="song-name m-0">{data.name}</p>
-        <p className="song-artist m-0">{data.album.artists[0].name}</p>
-      </td>
-      <td className="align-middle song-album">{data.album.name}</td>
-      <td className="align-middle">{formatFromMinutesSecond(data.duration_ms)}</td>
-      <td className="position-relative">
-        <button className="align-text-middle text-white btn btn-select-song position-absolute" type="button" onClick={handleSelect}>
+    <div className="song mb-2 d-flex align-items-center">
+      <div className="index ">{index + 1}</div>
+      <div className="song-title-col d-flex justify-content-start align-items-center">
+        <div className="song-img"><img className="img-song" src={data.album.images[2].url} alt="Song Cover" /></div>
+        <div className="song-detail">
+          <p className="song-name m-0">{data.name}</p>
+          <p className="song-artist m-0">{data.album.artists[0].name}</p>
+        </div>
+      </div>
+      <div className="song-album">{data.album.name}</div>
+      <div className="duration">{formatFromMinutesSecond(data.duration_ms)}</div>
+      <div className="position-relative align-self-start mt-2">
+        <button className="text-white btn btn-select-song position-absolute" type="button" onClick={handleSelect}>
           {generateButtonText()}
         </button>
-      </td>
-    </tr>
+      </div>
+    </div>
   );
 }
 

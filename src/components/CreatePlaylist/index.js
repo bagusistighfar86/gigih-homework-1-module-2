@@ -109,7 +109,11 @@ function CreatePlaylist({ selectedSong, setSelected }) {
   };
 
   return (
-    <div className="CreatePlaylist pe-3">
+    <div
+      className="CreatePlaylist pe-3"
+      data-aos="fade-up"
+      data-aos-delay="2000"
+    >
       <h1 className="text-white">Create Playlist</h1>
       <form onSubmit={handleSubmitPlaylist}>
         <div className="form-group">

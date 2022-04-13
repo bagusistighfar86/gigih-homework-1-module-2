@@ -31,7 +31,7 @@ function ListPlaylist({ selectedSong, setSelected }) {
   }, [setPlaylists]);
 
   return (
-    <div className="ListPlaylist">
+    <div className="ListPlaylist mb-5">
       <div className="row headerListPlaylist justify-content-between">
         <div className="col-2">
           <h1 className="text-white">List Playlist</h1>
