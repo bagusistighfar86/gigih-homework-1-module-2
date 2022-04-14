@@ -1,10 +1,12 @@
-.header-table{
+.container-song{
     font-weight: bold;
     border-bottom: 1px solid #353535;
     height: 40px;
+    flex-wrap: wrap;
 }
 
 .index{
+    text-align: center;
     flex-basis: 50px;
 }
 
@@ -18,8 +20,4 @@
 
 .duration{
     flex-basis: 150px;
-}
-
-thead tr{
-    border-bottom: 1px solid #353535;
 }

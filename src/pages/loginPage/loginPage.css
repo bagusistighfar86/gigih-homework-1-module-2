@@ -1,0 +1,50 @@
+.loginPage{
+    height: 100vh;
+    overflow: hidden;
+    background-image: url(../../assets/img/loginPage.jpg);
+    background-size: cover;
+    background-position: center center;
+}
+
+.loginContainer{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+    position: relative;
+}
+
+.contents{
+    align-self: flex-start;
+    overflow: hidden;
+}
+
+.whiteLogo{
+    align-self: flex-end;
+    position: absolute;
+    top: 50px;
+    right: 0;
+}
+
+.whiteLogoSpotify{
+    width: 200px;
+}
+
+Button.loginButton{
+    background: linear-gradient(69deg, rgba(220,120,102,1) 2.77%, rgba(244,209,154,1) 94.45%);
+    transition: all ease 0.5s linear;
+}
+Button.loginButton:hover{
+    background: linear-gradient(-69deg, rgba(220,120,102,1) 2.77%, rgba(244,209,154,1) 94.45%);
+    cursor: pointer;
+    /* background: rgb(220,120,102);
+    background: linear-gradient(69deg, rgb(72, 72, 70) 2.77%, rgb(8, 60, 124) 94.45%); */
+}
+
+.spotify{
+    background: linear-gradient(69.05deg, #DC7866 2.77%, #F4D19A 94.45%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
