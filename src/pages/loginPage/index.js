@@ -1,18 +1,20 @@
 // Material-UI
-import { Box, Typography, Button } from '@mui/material';
+import {
+  Box, Typography, Button,
+} from '@mui/material';
 
 // Libraries
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import AOS from 'aos';
+import { useStyles } from './loginPageStyles';
 import { setAccessToken } from '../../redux/slices/tokenSlice';
 import 'aos/dist/aos.css';
 
-// CSS
-import './loginPage.css';
-
 function LoginPage() {
+  const classes = useStyles();
+
   if (document.readyState === 'complete') {
     AOS.refresh();
   }
@@ -61,19 +63,23 @@ function LoginPage() {
 
   return (
     <Box
-      className="loginPage"
+      className={classes.loginPage}
+      component="div"
       data-aos="fade-zoom-in"
       delay="0"
     >
-      <Box className="loginContainer" sx={{ p: 0, width: '90%' }}>
+      <Box
+        className={classes.loginContainer}
+        sx={{ p: 0, width: '80%' }}
+      >
         <Box
-          className="whiteLogo"
+          className={classes.whiteLogo}
           data-aos="fade-left"
           data-aos-delay="100"
         >
-          <img className="whiteLogoSpotify" src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_RGB_White.png" alt="Logo Spotify" />
+          <img width={200} src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_RGB_White.png" alt="Logo Spotify" />
         </Box>
-        <Box className="contents" sx={{ p: 0 }}>
+        <Box component="div">
           <Typography
             variant="h1"
             sx={{ fontWeight: 500, fontSize: 70, color: 'white' }}
@@ -83,7 +89,7 @@ function LoginPage() {
             WELCOME TO
           </Typography>
           <Typography
-            className="spotify"
+            className={classes.spotifyText}
             variant="h2"
             sx={{ fontWeight: 'bold', fontSize: 140, lineHeight: 1 }}
             data-aos="fade-right"
@@ -92,7 +98,7 @@ function LoginPage() {
             SPOTIFY.
           </Typography>
           <Button
-            className="loginButton"
+            className={classes.loginButton}
             type="button"
             onClick={handleLogin}
             variant="contained"

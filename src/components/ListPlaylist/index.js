@@ -1,15 +1,15 @@
 // Libraries
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
 
 // CSS
 import './ListPlaylist.css';
 
 // Components
+import { useSelector } from 'react-redux';
 import Playlist from '../Playlist';
 
-function ListPlaylist({ selectedSong, setSelected }) {
+function ListPlaylist() {
   const accessToken = useSelector((state) => state.token.accessToken);
 
   const [playlistsData, setPlaylists] = useState([]);
@@ -48,8 +48,6 @@ function ListPlaylist({ selectedSong, setSelected }) {
           item.tracks.total >= 0 && (
           <Playlist
             key={item.id}
-            selectedSong={selectedSong}
-            setSelected={setSelected}
             data={item}
             accessToken={accessToken}
           />

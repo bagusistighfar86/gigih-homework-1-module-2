@@ -1,12 +1,15 @@
 // Libraries
 import React from 'react';
 import axios from 'axios';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 // CSS
 import './playlist.css';
+import { setSelectedSong } from '../../redux/slices/songSlice';
 
-function Playlist({ selectedSong, setSelected, data }) {
+function Playlist({ data }) {
+  const dispatch = useDispatch();
+  const selectedSong = useSelector((state) => state.song.selectedSong);
   const accessToken = useSelector((state) => state.token.accessToken);
 
   const addSongsToPlaylist = async (playlistId) => {
@@ -31,7 +34,7 @@ function Playlist({ selectedSong, setSelected, data }) {
           const res = await addSongsToPlaylist(playlistId);
           if (res) {
             console.log('Berhasil Upload');
-            setSelected([]);
+            dispatch(setSelectedSong([]));
             alert(`Song has been added to playlist ${data.name}`);
           }
         }

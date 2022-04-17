@@ -8,7 +8,7 @@ import './RecommendedSong.css';
 import songDummy from '../../songDummy';
 import Song from '../Song/index';
 
-function RecommendedSong({ selectedSong, setSelected }) {
+function RecommendedSong() {
   return (
     <div className="RecomendedSong">
       <h1 className="text-white">Recommended Songs</h1>
@@ -25,8 +25,6 @@ function RecommendedSong({ selectedSong, setSelected }) {
           index={index}
           uri={item.uri}
           data={item}
-          selectedSong={selectedSong}
-          setSelected={setSelected}
         />
       ))}
     </div>

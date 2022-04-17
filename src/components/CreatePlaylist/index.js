@@ -1,12 +1,15 @@
 // Libraries
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setSelectedSong } from '../../redux/slices/songSlice';
 
 // CSS
 import './createPlaylist.css';
 
-function CreatePlaylist({ selectedSong, setSelected }) {
+function CreatePlaylist() {
+  const dispatch = useDispatch();
+  const selectedSong = useSelector((state) => state.song.selectedSong);
   const accessToken = useSelector((state) => state.token.accessToken);
 
   const [playlistForm, setPlaylistForm] = useState({
@@ -98,7 +101,7 @@ function CreatePlaylist({ selectedSong, setSelected }) {
             title: '',
             description: '',
           });
-          setSelected([]);
+          dispatch(setSelectedSong([]));
           alert('Playlist is created!');
         }
       }

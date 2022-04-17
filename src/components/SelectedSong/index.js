@@ -1,10 +1,12 @@
 // Libraries
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 // Components
 import Song from '../Song/index';
 
-function SelectedSong({ selectedSong, setSelected }) {
+function SelectedSong() {
+  const selectedSong = useSelector((state) => state.song.selectedSong);
   return (
     <div className="SelectedSong mb-5">
       <h1 className="text-white">Selected Song</h1>
@@ -24,8 +26,6 @@ function SelectedSong({ selectedSong, setSelected }) {
             index={index}
             uri={item.uri}
             data={item}
-            selectedSong={selectedSong}
-            setSelected={setSelected}
           />
         ))}
       </div>

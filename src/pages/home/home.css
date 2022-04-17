@@ -8,12 +8,13 @@
   height: 100vh;
   background-color: #080808;
   position: relative;
+  
 }
 
 .main{
   height: 100vh;
   background: rgb(31,31,31);
-  background: linear-gradient(180deg, rgba(31,31,31,1) 0%, rgba(8,8,8,1) 100%);
+  background: linear-gradient(180deg, rgba(31,31,31,1) 0%, rgba(8,8,8,1) 100);
 }
 
 .main-header{

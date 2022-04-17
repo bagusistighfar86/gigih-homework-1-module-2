@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import './navbar.css';
 
 // Components
-import Search from '../SearchBar/index';
+import SearchBar from '../SearchBar/index';
 import LogoutButton from './Logout/logoutBtn';
 
 function Navbar({ search, handleSubmit, handleChangeSearch }) {
@@ -23,7 +23,7 @@ function Navbar({ search, handleSubmit, handleChangeSearch }) {
             />
           </div>
           <div className="middleNav col-5">
-            <Search
+            <SearchBar
               search={search}
               handleChangeSearch={handleChangeSearch}
               handleSubmit={handleSubmit}

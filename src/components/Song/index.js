@@ -5,11 +5,16 @@ import React from 'react';
 import './song.css';
 
 // Components
+import { useDispatch, useSelector } from 'react-redux';
 import formatFromMinutesSecond from '../../utils/formatFromMinutesSecond';
+import { setSelectedSong } from '../../redux/slices/songSlice';
 
 function Song({
-  uri, data, selectedSong, setSelected, index,
+  uri, data, index,
 }) {
+  const dispatch = useDispatch();
+  const selectedSong = useSelector((state) => state.song.selectedSong);
+
   const generateButtonText = () => {
     const selected = selectedSong.findIndex((item) => item.uri === uri);
     if (selected !== -1) return 'Deselect';
@@ -19,14 +24,14 @@ function Song({
   const handleSelect = () => {
     const selected = selectedSong.findIndex((item) => item.uri === uri);
     if (selectedSong === 0) {
-      setSelected([]);
+      dispatch(setSelectedSong([]));
     }
     if (selected > -1) {
       const newSelectedSongs = selectedSong.filter((item) => item.uri !== uri);
-      setSelected(newSelectedSongs);
+      dispatch(setSelectedSong(newSelectedSongs));
     } else {
       const newSelectedSongs = [...selectedSong, data];
-      setSelected(newSelectedSongs);
+      dispatch(setSelectedSong(newSelectedSongs));
     }
   };
 
