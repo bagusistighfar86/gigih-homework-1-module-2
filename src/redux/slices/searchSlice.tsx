@@ -1,10 +1,18 @@
 /* eslint-disable no-param-reassign */
 // Libraries
 import { createSlice } from '@reduxjs/toolkit';
+import type { RootState } from '../store'
+import { ItemSong } from "../../apiModel/searchSong";
 
+interface SearchState {
+  search: string,
+  dataSearch: ItemSong,
+}
+
+// Define the initial state using that type
 const initialState = {
   search: '',
-  dataSearch: {},
+  dataSearch: [],
 };
 
 const searchSlice = createSlice({
@@ -17,7 +25,7 @@ const searchSlice = createSlice({
     },
     setSearch: (state, action) => {
       if (action.payload === '') {
-        state.dataSearch = {};
+        state.dataSearch = [];
       }
       state.search = action.payload;
     },
@@ -26,4 +34,6 @@ const searchSlice = createSlice({
 
 export const { setDataSearch, setSearch } = searchSlice.actions;
 
+export const search = (state: RootState) => state.search.search;
+export const dataSearch = (state: RootState) => state.search.dataSearch;
 export default searchSlice.reducer;

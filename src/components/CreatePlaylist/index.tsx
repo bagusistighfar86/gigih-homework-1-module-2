@@ -1,16 +1,19 @@
 // Libraries
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch,useAppSelector } from '../../redux/hooks'
 import { setSelectedSong } from '../../redux/slices/songSlice';
+import { Profile } from "../../apiModel/profile";
+import { Playlist } from "../../apiModel/playlist";
+import { ItemSong } from "../../apiModel/searchSong";
 
 // CSS
 import './createPlaylist.css';
 
 function CreatePlaylist() {
-  const dispatch = useDispatch();
-  const selectedSong = useSelector((state) => state.song.selectedSong);
-  const accessToken = useSelector((state) => state.token.accessToken);
+  const dispatch = useAppDispatch();
+  const selectedSong = useAppSelector((state) => state.song.selectedSong);
+  const accessToken = useAppSelector((state) => state.token.accessToken);
 
   const [playlistForm, setPlaylistForm] = useState({
     title: '',
@@ -44,7 +47,7 @@ function CreatePlaylist() {
     return null;
   }
 
-  const createPlaylist = async (userId) => {
+  const createPlaylist = async (userId: Profile) => {
     try {
       const res = await axios.post(`https://api.spotify.com/v1/users/${userId}/playlists?access_token=${accessToken}`, {
         name: playlistForm.title,
@@ -62,11 +65,11 @@ function CreatePlaylist() {
     return null;
   };
 
-  const addSongsToPlaylist = async (playlistId) => {
+  const addSongsToPlaylist = async (playlistId: Playlist) => {
     try {
       console.log(playlistId);
       const res = await axios.post(`https://api.spotify.com/v1/playlists/${playlistId}/tracks?access_token=${accessToken}`, {
-        uris: selectedSong.map((song) => song.uri),
+        uris: selectedSong.map((song: ItemSong) => song.uri),
       });
       console.log(res);
       return res;
@@ -76,14 +79,14 @@ function CreatePlaylist() {
     return null;
   };
 
-  const handleChangeForm = (e) => {
+  const handleChangeForm = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPlaylistForm({
       ...playlistForm, [e.target.name]: e.target.value,
     });
     console.log({ ...playlistForm, [e.target.name]: e.target.value });
   };
 
-  const handleSubmitPlaylist = async (e) => {
+  const handleSubmitPlaylist = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       const userId = await getUserData();

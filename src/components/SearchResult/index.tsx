@@ -1,19 +1,20 @@
 // Libraries
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '../../redux/hooks'
+import { ItemSong } from "../../apiModel/searchSong";
+
 
 // Components
 import Song from '../Song/index';
 
-function SearchResult({ selectedSong, setSelected }) {
-  const dataSearch = useSelector((state) => state.search.dataSearch);
-  const data = dataSearch.items;
+function SearchResult() {
+  const dataSearch = useAppSelector((state) => state.search.dataSearch);
 
   return (
     <div className="SearchResult mb-5">
       <h1 className="text-white">Search Result</h1>
-      {data && (
-        data.length !== 0 && (
+      {dataSearch && (
+        dataSearch.length !== 0 && (
         <>
           <div className="header-table mb-3 d-flex text-white">
             <p className="index">#</p>
@@ -23,14 +24,12 @@ function SearchResult({ selectedSong, setSelected }) {
             <p className="selectSong">Select Song</p>
           </div>
           <div className="songMap">
-            {data.map((item, index) => (
+            {dataSearch.map((item: ItemSong, index) => (
               <Song
                 key={item.id}
                 index={index}
                 uri={item.uri}
                 data={item}
-                selectedSong={selectedSong}
-                setSelected={setSelected}
               />
             ))}
           </div>

@@ -5,29 +5,32 @@ import React from 'react';
 import './song.css';
 
 // Components
-import { useDispatch, useSelector } from 'react-redux';
 import formatFromMinutesSecond from '../../utils/formatFromMinutesSecond';
 import { setSelectedSong } from '../../redux/slices/songSlice';
+import { useAppDispatch,useAppSelector } from '../../redux/hooks'
+import { ItemSong } from "../../apiModel/searchSong";
 
-function Song({
-  uri, data, index,
-}) {
-  const dispatch = useDispatch();
-  const selectedSong = useSelector((state) => state.song.selectedSong);
+type Props = {
+  uri: string;
+  index: number;
+  data: ItemSong;
+};
+
+function Song({ uri, data, index }: Props) {
+  
+  const dispatch = useAppDispatch();
+  const selectedSong = useAppSelector((state) => state.song.selectedSong);
 
   const generateButtonText = () => {
-    const selected = selectedSong.findIndex((item) => item.uri === uri);
+    const selected = selectedSong.findIndex((item: ItemSong) => item.uri === uri);
     if (selected !== -1) return 'Deselect';
     return 'Select';
   };
 
   const handleSelect = () => {
-    const selected = selectedSong.findIndex((item) => item.uri === uri);
-    if (selectedSong === 0) {
-      dispatch(setSelectedSong([]));
-    }
+    const selected = selectedSong.findIndex((item: ItemSong) => item.uri === uri);
     if (selected > -1) {
-      const newSelectedSongs = selectedSong.filter((item) => item.uri !== uri);
+      const newSelectedSongs = selectedSong.filter((item: ItemSong) => item.uri !== uri);
       dispatch(setSelectedSong(newSelectedSongs));
     } else {
       const newSelectedSongs = [...selectedSong, data];

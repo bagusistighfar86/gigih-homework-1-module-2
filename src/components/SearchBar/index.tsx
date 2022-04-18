@@ -1,17 +1,18 @@
 // Libraries
-import React from 'react';
+import React, { ChangeEvent, ChangeEventHandler, EventHandler } from 'react';
 
 import { styled, alpha } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
 import InputBase from '@mui/material/InputBase';
 import { Box } from '@mui/material';
-import { useDispatch, useSelector } from 'react-redux';
 import { setDataSearch, setSearch } from '../../redux/slices/searchSlice';
+import { useAppSelector, useAppDispatch } from '../../redux/hoox'
 
 function SearchBar() {
-  const dispatch = useDispatch();
-  const accessToken = useSelector((state) => state.token.accessToken);
-  const search = useSelector((state) => state.search.search);
+  const dispatch = useAppDispatch();
+  const accessToken = useAppSelector((state) => state.token.accessToken);
+  const search = useAppSelector((state) => state.search.search);
+  
   const getSpotify = () => {
     fetch(
       `https://api.spotify.com/v1/search?q=${
@@ -22,16 +23,16 @@ function SearchBar() {
     )
       .then((res) => res.json())
       .then((dataSong) => {
-        dispatch(setDataSearch(dataSong.tracks));
+        dispatch(setDataSearch(dataSong.tracks.items));
       });
   };
-
-  const handleChangeSearch = (event) => {
+  
+  const handleChangeSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     // berhasil
     dispatch(setSearch(event.target.value));
   };
 
-  const handleSubmitSearch = (event) => {
+  const handleSubmitSearch = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     getSpotify();
   };

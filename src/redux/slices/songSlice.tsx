@@ -1,6 +1,12 @@
 /* eslint-disable no-param-reassign */
 // Libraries
 import { createSlice } from '@reduxjs/toolkit';
+import type { RootState } from '../store'
+import { ItemSong } from "../../apiModel/searchSong";
+
+interface SearchState {
+  selectedSong: ItemSong,
+}
 
 const initialState = {
   selectedSong: [],
@@ -11,7 +17,7 @@ const songSlice = createSlice({
   initialState,
   reducers: {
     setSelectedSong: (state, action) => {
-      if (action.payload === '') {
+      if (action.payload === []) {
         state.selectedSong = [];
       }
       state.selectedSong = action.payload;
@@ -20,5 +26,5 @@ const songSlice = createSlice({
 });
 
 export const { setSelectedSong } = songSlice.actions;
-
+export const selectedSong = (state: RootState) => state.song.selectedSong;
 export default songSlice.reducer;

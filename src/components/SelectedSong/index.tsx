@@ -1,12 +1,13 @@
 // Libraries
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '../../redux/hooks'
+import { ItemSong } from "../../apiModel/searchSong";
 
 // Components
 import Song from '../Song/index';
 
 function SelectedSong() {
-  const selectedSong = useSelector((state) => state.song.selectedSong);
+  const selectedSong = useAppSelector((state) => state.song.selectedSong);
   return (
     <div className="SelectedSong mb-5">
       <h1 className="text-white">Selected Song</h1>
@@ -20,7 +21,7 @@ function SelectedSong() {
         </div>
       )}
       <div className="songMap">
-        {selectedSong.map((item, index) => (
+        {selectedSong.map((item: ItemSong, index) => (
           <Song
             key={item.id}
             index={index}

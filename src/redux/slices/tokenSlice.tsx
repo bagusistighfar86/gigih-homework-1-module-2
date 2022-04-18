@@ -1,6 +1,12 @@
 // Libraries
 import { createSlice } from '@reduxjs/toolkit';
+import type { RootState } from '../store'
 
+interface tokenState {
+  accessToken: string,
+}
+
+// Define the initial state using that type
 const initialState = {
   accessToken: localStorage.getItem('access_token') ?? '',
 };
@@ -24,5 +30,6 @@ const tokenSlice = createSlice({
 });
 
 export const { setAccessToken, setRemoveAccessToken } = tokenSlice.actions;
+export const accessToken = (state: RootState) => state.token.accessToken;
 
 export default tokenSlice.reducer;
