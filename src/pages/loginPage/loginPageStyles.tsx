@@ -42,4 +42,5 @@ const useStyles = makeStyles({
   },
 });
 
+// eslint-disable-next-line import/prefer-default-export
 export { useStyles };

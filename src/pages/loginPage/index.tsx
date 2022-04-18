@@ -5,9 +5,9 @@ import {
 
 // Libraries
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import AOS from 'aos';
+import { useAppSelector, useAppDispatch } from '../../redux/hooks';
 import { useStyles } from './loginPageStyles';
 import { setAccessToken } from '../../redux/slices/tokenSlice';
 import 'aos/dist/aos.css';
@@ -34,10 +34,10 @@ function LoginPage() {
   const scopes = 'user-read-private user-read-email playlist-modify-private user-library-read user-library-modify';
   const url = `${AUTH_URL}?client_id=${spotifyClientId}&redirect_uri=${redirectUri}&scope=${scopes}&response_type=token&show_dialog=true`;
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const history = useHistory();
 
-  const accessToken = useSelector((state) => state.token.accessToken);
+  const accessToken = useAppSelector((state) => state.token.accessToken);
 
   const handleLogin = () => {
     window.location.replace(url);
@@ -66,7 +66,6 @@ function LoginPage() {
       className={classes.loginPage}
       component="div"
       data-aos="fade-zoom-in"
-      delay="0"
     >
       <Box
         className={classes.loginContainer}

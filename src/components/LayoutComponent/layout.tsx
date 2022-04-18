@@ -19,14 +19,16 @@ const useStyle = makeStyles({
 
 const drawerWidth = 240;
 
-export default function Layout({ children }) {
+type Props = {
+  children: React.ReactNode
+}
+function Layout({ children }: Props) {
   const classes = useStyle();
   return (
     <Box component="div" className={classes.root}>
       {/* Appbar */}
       <AppBar
         position="fixed"
-        className={classes.appbar}
         sx={{
           width: `calc(100% - ${drawerWidth}px)`,
           display: 'flex',
@@ -49,3 +51,5 @@ export default function Layout({ children }) {
     </Box>
   );
 }
+
+export default Layout;

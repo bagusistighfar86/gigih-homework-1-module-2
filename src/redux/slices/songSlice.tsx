@@ -1,9 +1,10 @@
 /* eslint-disable no-param-reassign */
 // Libraries
 import { createSlice } from '@reduxjs/toolkit';
-import type { RootState } from '../store'
-import { ItemSong } from "../../apiModel/searchSong";
+import type { RootState } from '../store';
+import { ItemSong } from '../../apiModel/InterfaceSong';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 interface SearchState {
   selectedSong: ItemSong,
 }

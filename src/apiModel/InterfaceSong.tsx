@@ -78,7 +78,7 @@ export interface ItemSong {
   uri: string;
 }
 
-export interface Song {
+export interface SongResponse {
   href: string;
   items: ItemSong[];
   limit: number;
@@ -86,8 +86,4 @@ export interface Song {
   offset: number;
   previous?: string;
   total: number;
-}
-
-export interface SearchSongResponse {
-  tracks: Song;
 }

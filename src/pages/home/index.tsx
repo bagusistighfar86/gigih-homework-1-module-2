@@ -14,7 +14,6 @@ import CreatePlaylist from '../../components/CreatePlaylist';
 import ListPlaylist from '../../components/ListPlaylist';
 import SearchResult from '../../components/SearchResult';
 import SelectedSong from '../../components/SelectedSong/index';
-import RecommendedSong from '../../components/RecommendedSong';
 
 function Home() {
   return (
@@ -57,26 +56,22 @@ function Home() {
             className="event"
             data-aos="fade-up"
             data-aos-delay="500"
-          >
-          </div>
+          />
           <div
             className="yourFavorite bg-primary"
             data-aos="fade-up"
             data-aos-delay="1000"
-          >
-          </div>
+          />
           <div
             className="topTrending"
             data-aos="fade-up"
             data-aos-delay="1500"
-          >
-          </div>
+          />
         </div>
         <CreatePlaylist />
         <ListPlaylist />
         <SelectedSong />
         <SearchResult />
-        <RecommendedSong />
       </div>
     </div>
   );

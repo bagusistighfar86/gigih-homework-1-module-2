@@ -1,13 +1,13 @@
 // Libaries
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { setRemoveAccessToken } from '../../../redux/slices/tokenSlice';
+import { useAppDispatch } from '../../redux/hooks';
+import { setRemoveAccessToken } from '../../redux/slices/tokenSlice';
 
 // CSS
 import './logoutButton.css';
 
 function LogoutButton() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   return (
     <div className="Logout text-end">

@@ -1,10 +1,14 @@
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable react/prop-types */
 // Libraries
 import React from 'react';
-import { useSelector } from 'react-redux';
 import { Redirect, Route } from 'react-router-dom';
+import { useAppSelector } from '../redux/hooks';
 
-function PrivateRoute({ component: Component, ...rest }) {
-  const accessToken = useSelector((state) => state.token.accessToken);
+// function PrivateRoute({ component, ...rest }:any)
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function PrivateRoute({ comp: Component, ...rest }: any) {
+  const accessToken = useAppSelector((state) => state.token.accessToken);
 
   return (
     <Route

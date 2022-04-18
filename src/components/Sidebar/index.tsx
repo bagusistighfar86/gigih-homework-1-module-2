@@ -36,7 +36,11 @@ const sideBarItem = [
   },
 ];
 
-function Sidebar({ drawerWidth }) {
+type Props = {
+  drawerWidth: number;
+};
+
+function Sidebar({ drawerWidth }: Props) {
   const useStyle = makeStyles({
     root: {
       display: 'flex',
@@ -108,7 +112,7 @@ function Sidebar({ drawerWidth }) {
           ))}
         </List>
       </Box>
-      <Box className={classes.selectedSong}></Box>
+      <Box className={classes.selectedSong} />
     </Drawer>
   );
 }

@@ -6,11 +6,12 @@ import React, { useState, useEffect } from 'react';
 import './ListPlaylist.css';
 
 // Components
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '../../redux/hooks';
 import Playlist from '../Playlist';
+import { PlaylistItem } from '../../apiModel/InterfacePlaylist';
 
 function ListPlaylist() {
-  const accessToken = useSelector((state) => state.token.accessToken);
+  const accessToken = useAppSelector((state) => state.token.accessToken);
 
   const [playlistsData, setPlaylists] = useState([]);
 
@@ -43,13 +44,12 @@ function ListPlaylist() {
         </div>
       </div>
       <div className="row playlistMap">
-        {playlistsData.map((item) => (
+        {playlistsData.map((item: PlaylistItem) => (
           // console.log(item)
           item.tracks.total >= 0 && (
           <Playlist
             key={item.id}
             data={item}
-            accessToken={accessToken}
           />
           )
         ))}

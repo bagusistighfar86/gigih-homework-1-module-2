@@ -7,8 +7,8 @@ import './song.css';
 // Components
 import formatFromMinutesSecond from '../../utils/formatFromMinutesSecond';
 import { setSelectedSong } from '../../redux/slices/songSlice';
-import { useAppDispatch,useAppSelector } from '../../redux/hooks'
-import { ItemSong } from "../../apiModel/searchSong";
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { ItemSong } from '../../apiModel/InterfaceSong';
 
 type Props = {
   uri: string;
@@ -17,7 +17,6 @@ type Props = {
 };
 
 function Song({ uri, data, index }: Props) {
-  
   const dispatch = useAppDispatch();
   const selectedSong = useAppSelector((state) => state.song.selectedSong);
 
@@ -39,7 +38,7 @@ function Song({ uri, data, index }: Props) {
   };
 
   return (
-    <div className="song mb-2 d-flex align-items-center">
+    <div className="song text-white mb-2 d-flex align-items-center">
       <div className="index">{index + 1}</div>
       <div className="song-title-col d-flex justify-content-start align-items-center">
         <div className="song-img"><img className="img-song" src={data.album.images[2].url} alt="Song Cover" /></div>

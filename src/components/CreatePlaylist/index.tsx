@@ -1,11 +1,14 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable no-unused-vars */
 // Libraries
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useAppDispatch,useAppSelector } from '../../redux/hooks'
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { setSelectedSong } from '../../redux/slices/songSlice';
-import { Profile } from "../../apiModel/profile";
-import { Playlist } from "../../apiModel/playlist";
-import { ItemSong } from "../../apiModel/searchSong";
+import { Profile } from '../../apiModel/InterfaceProfile';
+import { PlaylistItem } from '../../apiModel/InterfacePlaylist';
+import { ItemSong } from '../../apiModel/InterfaceSong';
 
 // CSS
 import './createPlaylist.css';
@@ -65,7 +68,7 @@ function CreatePlaylist() {
     return null;
   };
 
-  const addSongsToPlaylist = async (playlistId: Playlist) => {
+  const addSongsToPlaylist = async (playlistId: PlaylistItem['id']) => {
     try {
       console.log(playlistId);
       const res = await axios.post(`https://api.spotify.com/v1/playlists/${playlistId}/tracks?access_token=${accessToken}`, {
@@ -92,8 +95,8 @@ function CreatePlaylist() {
       const userId = await getUserData();
       const playlistId = await createPlaylist(userId);
       if (playlistId) {
-        if (selectedSong !== []) {
-          // eslint-disable-next-line no-unused-vars
+        if (selectedSong === []) {
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
           const res = await addSongsToPlaylist(playlistId);
         }
         const res = playlistId;

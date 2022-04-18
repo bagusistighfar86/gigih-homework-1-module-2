@@ -1,61 +1,12 @@
 // Libraries
-import React, { ChangeEvent, ChangeEventHandler, EventHandler } from 'react';
+import React from 'react';
 
 import { styled, alpha } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
 import InputBase from '@mui/material/InputBase';
 import { Box } from '@mui/material';
 import { setDataSearch, setSearch } from '../../redux/slices/searchSlice';
-import { useAppSelector, useAppDispatch } from '../../redux/hoox'
-
-function SearchBar() {
-  const dispatch = useAppDispatch();
-  const accessToken = useAppSelector((state) => state.token.accessToken);
-  const search = useAppSelector((state) => state.search.search);
-  
-  const getSpotify = () => {
-    fetch(
-      `https://api.spotify.com/v1/search?q=${
-        search
-      }&access_token=${
-        accessToken
-      }&type=track`,
-    )
-      .then((res) => res.json())
-      .then((dataSong) => {
-        dispatch(setDataSearch(dataSong.tracks.items));
-      });
-  };
-  
-  const handleChangeSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
-    // berhasil
-    dispatch(setSearch(event.target.value));
-  };
-
-  const handleSubmitSearch = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    getSpotify();
-  };
-
-  return (
-    <Box component="form" onSubmit={handleSubmitSearch} sx={{ flexBasis: '50%' }}>
-      {/* <form onSubmit={handleSubmit} style={{ width: '100%' }}> */}
-      <Search>
-        <SearchIconWrapper>
-          <SearchIcon />
-        </SearchIconWrapper>
-        <StyledInputBase
-          type="text"
-          value={search}
-          onChange={handleChangeSearch}
-          placeholder="Search"
-          inputProps={{ 'aria-label': 'search' }}
-        />
-      </Search>
-      {/* </form> */}
-    </Box>
-  );
-}
+import { useAppSelector, useAppDispatch } from '../../redux/hooks';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -84,5 +35,59 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     transition: theme.transitions.create('width'),
   },
 }));
+
+function SearchBar() {
+  const dispatch = useAppDispatch();
+  const accessToken = useAppSelector((state) => state.token.accessToken);
+  const search = useAppSelector((state) => state.search.search);
+
+  const getSpotify = () => {
+    fetch(
+      `https://api.spotify.com/v1/search?q=${
+        search
+      }&access_token=${
+        accessToken
+      }&type=track`,
+    )
+      .then((res) => res.json())
+      .then((dataSong) => {
+        dispatch(setDataSearch(dataSong.tracks.items));
+      });
+  };
+
+  // eslint-disable-next-line max-len
+  const handleChangeSearch = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    // berhasil
+    console.log(event.target.value);
+    dispatch(setSearch(event.target.value));
+    if (event.target.value === '') {
+      dispatch(setDataSearch([]));
+    }
+  };
+
+  const handleSubmitSearch = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    getSpotify();
+  };
+
+  return (
+    <Box component="form" onSubmit={handleSubmitSearch} sx={{ flexBasis: '50%' }}>
+      {/* <form onSubmit={handleSubmit} style={{ width: '100%' }}> */}
+      <Search>
+        <SearchIconWrapper>
+          <SearchIcon />
+        </SearchIconWrapper>
+        <StyledInputBase
+          type="text"
+          value={search}
+          onChange={handleChangeSearch}
+          placeholder="Search"
+          inputProps={{ 'aria-label': 'search' }}
+        />
+      </Search>
+      {/* </form> */}
+    </Box>
+  );
+}
 
 export default SearchBar;

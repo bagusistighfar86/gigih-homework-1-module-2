@@ -1,21 +1,28 @@
 // Libraries
 import React from 'react';
 import axios from 'axios';
-import { useDispatch, useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 
 // CSS
 import './playlist.css';
 import { setSelectedSong } from '../../redux/slices/songSlice';
 
-function Playlist({ data }) {
-  const dispatch = useDispatch();
-  const selectedSong = useSelector((state) => state.song.selectedSong);
-  const accessToken = useSelector((state) => state.token.accessToken);
+import { ItemSong } from '../../apiModel/InterfaceSong';
+import { PlaylistItem } from '../../apiModel/InterfacePlaylist';
 
-  const addSongsToPlaylist = async (playlistId) => {
+type Props = {
+  data: PlaylistItem;
+};
+
+function Playlist({ data }: Props) {
+  const dispatch = useAppDispatch();
+  const selectedSong = useAppSelector((state) => state.song.selectedSong);
+  const accessToken = useAppSelector((state) => state.token.accessToken);
+
+  const addSongsToPlaylist = async (playlistId: PlaylistItem['id']) => {
     try {
       const res = await axios.post(`https://api.spotify.com/v1/playlists/${playlistId}/tracks?access_token=${accessToken}`, {
-        uris: selectedSong.map((song) => song.uri),
+        uris: selectedSong.map((song: ItemSong) => song.uri),
       });
       console.log(res);
       return res;
@@ -25,7 +32,7 @@ function Playlist({ data }) {
     return null;
   };
 
-  const handleAddSongtoPlaylist = async (e) => {
+  const handleAddSongtoPlaylist = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     try {
       const playlistId = data.id;

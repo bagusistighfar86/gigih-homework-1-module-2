@@ -1,8 +1,7 @@
 // Libraries
 import React from 'react';
-import { useAppSelector } from '../../redux/hooks'
-import { ItemSong } from "../../apiModel/searchSong";
-
+import { useAppSelector } from '../../redux/hooks';
+import { ItemSong } from '../../apiModel/InterfaceSong';
 
 // Components
 import Song from '../Song/index';
