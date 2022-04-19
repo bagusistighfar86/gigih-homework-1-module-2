@@ -20,12 +20,21 @@ const songSlice = createSlice({
     setSelectedSong: (state, action) => {
       if (action.payload === []) {
         state.selectedSong = [];
+        localStorage.removeItem('selectedSong');
       }
       state.selectedSong = action.payload;
+      localStorage.setItem('selectedSong', JSON.stringify(state.selectedSong));
+    },
+    getSelectedSong: (state) => {
+      const prevSelectedSong = localStorage.getItem('selectedSong');
+      if (prevSelectedSong) {
+        const prevSelected = prevSelectedSong !== null && JSON.parse(prevSelectedSong);
+        state.selectedSong = prevSelected;
+      }
     },
   },
 });
 
-export const { setSelectedSong } = songSlice.actions;
+export const { setSelectedSong, getSelectedSong } = songSlice.actions;
 export const selectedSong = (state: RootState) => state.song.selectedSong;
 export default songSlice.reducer;

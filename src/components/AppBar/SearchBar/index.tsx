@@ -1,12 +1,12 @@
 // Libraries
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { styled, alpha } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
 import InputBase from '@mui/material/InputBase';
 import { Box } from '@mui/material';
-import { setDataSearch, setSearch } from '../../redux/slices/searchSlice';
-import { useAppSelector, useAppDispatch } from '../../redux/hooks';
+import { setDataSearch, setSearch } from '../../../redux/slices/searchSlice';
+import { useAppSelector, useAppDispatch } from '../../../redux/hooks';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -69,6 +69,10 @@ function SearchBar() {
     event.preventDefault();
     getSpotify();
   };
+
+  useEffect(() => {
+    if (search !== '') { getSpotify(); }
+  }, [search]);
 
   return (
     <Box component="form" onSubmit={handleSubmitSearch} sx={{ flexBasis: '50%' }}>

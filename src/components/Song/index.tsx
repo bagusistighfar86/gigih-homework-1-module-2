@@ -39,7 +39,7 @@ function Song({ uri, data, index }: Props) {
 
   return (
     <div className="song text-white mb-2 d-flex align-items-center">
-      <div className="index">{index + 1}</div>
+      <div className="index text-center">{index + 1}</div>
       <div className="song-title-col d-flex justify-content-start align-items-center">
         <div className="song-img"><img className="img-song" src={data.album.images[2].url} alt="Song Cover" /></div>
         <div className="song-detail">

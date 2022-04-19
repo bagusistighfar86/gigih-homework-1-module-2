@@ -1,6 +1,5 @@
 .home {
   /* animation: name duration timing-function delay iteration-count direction fill-mode; */
-  background-color: #121212;
   font-family: "Roboto", sans-serif;
 }
 
@@ -19,9 +18,9 @@
 
 .main-header{
   animation: 2s ease slideInFromDown;
-  padding: 120px 0;
+  padding-top: 40px;
   display: grid;
-  height: 630px;
+  height: 400px;
   grid-template-columns: 25% 25% 15% 25%;
   grid-template-rows: 50% 50%;
   row-gap: 30px;
@@ -80,9 +79,4 @@ button.btn-upgrade-premium:hover{
   background-size: cover;
   background-position: center center;
   border-radius: 15px;
-}
-
-.content{
-  overflow-y: scroll;
-  padding-bottom: 100px;
 }

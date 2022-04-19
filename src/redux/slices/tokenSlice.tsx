@@ -26,6 +26,8 @@ const tokenSlice = createSlice({
       // eslint-disable-next-line no-param-reassign
       state.accessToken = '';
       localStorage.removeItem('access_token');
+      localStorage.removeItem('userData');
+      localStorage.removeItem('selectedSong');
     },
   },
 });

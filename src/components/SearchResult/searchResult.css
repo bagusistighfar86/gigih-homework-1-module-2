@@ -1,0 +1,18 @@
+.index{
+    flex-basis: 50px;
+}
+
+.title{
+    flex-basis: 460px;
+}
+
+.album {
+    flex-basis: 700px;
+}
+
+.duration{
+    flex-basis: 150px;
+}
+.header-table{
+    border-bottom: 2px solid #3d3d3d;
+}

@@ -121,7 +121,7 @@ function CreatePlaylist() {
     <div
       className="CreatePlaylist pe-3"
       data-aos="fade-up"
-      data-aos-delay="2000"
+      data-aos-delay="100"
     >
       <h1 className="text-white">Create Playlist</h1>
       <form onSubmit={handleSubmitPlaylist}>

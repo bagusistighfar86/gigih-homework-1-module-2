@@ -10,12 +10,10 @@ import './home.css';
 // import { Box, Typography } from '@mui/material';
 
 import guitarBoy from '../../assets/img/guitar-boy.png';
-import CreatePlaylist from '../../components/CreatePlaylist';
-import ListPlaylist from '../../components/ListPlaylist';
-import SearchResult from '../../components/SearchResult';
-import SelectedSong from '../../components/SelectedSong/index';
 
 function Home() {
+  const userData = localStorage.getItem('userData');
+  const userDataProfile = userData !== null && JSON.parse(userData);
   return (
   // <Box component="div">
   //   <Typography>
@@ -42,7 +40,12 @@ function Home() {
               />
             </div>
             <div className="upgrade-box-content w-50 m-5 text-start">
-              <h1 className="m-0 p-0">Hello, Bagus!</h1>
+              <h1 className="m-0 p-0">
+                Hello,
+                {' '}
+                {userDataProfile.display_name}
+                !
+              </h1>
               <p className="fs-5">Welcome to spotify</p>
               <button
                 type="button"
@@ -68,10 +71,6 @@ function Home() {
             data-aos-delay="1500"
           />
         </div>
-        <CreatePlaylist />
-        <ListPlaylist />
-        <SelectedSong />
-        <SearchResult />
       </div>
     </div>
   );

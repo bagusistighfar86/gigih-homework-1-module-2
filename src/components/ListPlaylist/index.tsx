@@ -12,6 +12,9 @@ import { PlaylistItem } from '../../apiModel/InterfacePlaylist';
 
 function ListPlaylist() {
   const accessToken = useAppSelector((state) => state.token.accessToken);
+  const selectedSong = useAppSelector((state) => state.song.selectedSong);
+
+  console.log('ListPlaylist Selected', selectedSong);
 
   const [playlistsData, setPlaylists] = useState([]);
 

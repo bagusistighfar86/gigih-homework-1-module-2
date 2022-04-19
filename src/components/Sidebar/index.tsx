@@ -3,35 +3,45 @@ import React from 'react';
 
 //  MaterialUI
 import {
-  Box, Drawer, List, ListItem, ListItemIcon, ListItemText,
+  Box, Drawer, List, ListItem, ListItemIcon, ListItemText, Typography,
 } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import PlaylistPlayIcon from '@mui/icons-material/PlaylistPlay';
+import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { createTheme } from '@mui/system';
 import { makeStyles } from '@mui/styles';
+import { Link, useLocation } from 'react-router-dom';
+import SelectedSong from '../SelectedSong';
+import { useAppSelector } from '../../redux/hooks';
+import { ItemSong } from '../../apiModel/InterfaceSong';
 
 const theme = createTheme();
 const sideBarItem = [
   {
     text: 'Home',
-    icon: <HomeIcon color="primary" />,
+    icon: <HomeIcon />,
     path: '/home',
   },
   {
     text: 'Create Playlist',
-    icon: <PlaylistPlayIcon color="primary" />,
+    icon: <PlaylistAddIcon />,
     path: '/create-playlist',
   },
   {
+    text: 'List Playlist',
+    icon: <PlaylistPlayIcon />,
+    path: '/list-playlist',
+  },
+  {
     text: 'Account',
-    icon: <AccountCircleIcon color="primary" />,
+    icon: <AccountCircleIcon />,
     path: '/account',
   },
   {
     text: 'Setting',
-    icon: <SettingsIcon color="primary" />,
+    icon: <SettingsIcon />,
     path: '/setting',
   },
 ];
@@ -41,7 +51,27 @@ type Props = {
 };
 
 function Sidebar({ drawerWidth }: Props) {
+  const location = useLocation();
+  const selectedSong = useAppSelector((state) => state.song.selectedSong);
+
   const useStyle = makeStyles({
+    '@global': {
+      '*::-webkit-scrollbar': {
+        width: '5px',
+      },
+      '&::-webkit-scrollbar-track': {
+        boxShadow: 'inset 0 0 14px 14px transparent',
+        border: 'solid 4px transparent',
+      },
+      '*::-webkit-scrollbar-thumb': {
+        boxShadow: 'inset 0 0 14px 14px #bbbbbe',
+        border: 'solid 4px transparent',
+        backgroundColor: 'rgb(255 126 95 / 1)',
+        outline: '0 solid slategrey',
+        borderRadius: '20px',
+
+      },
+    },
     root: {
       display: 'flex',
     },
@@ -53,19 +83,52 @@ function Sidebar({ drawerWidth }: Props) {
     },
     drawerPaper: {
       '&&': {
-        color: 'white',
         width: drawerWidth,
         fontWeight: 700,
         background: '#080808',
+        overflow: 'hidden',
       },
     },
-    navBox: {
+    sideBox: {
       height: 'fit-content',
     // backgroundColor: 'red',
     },
-    ListItemIcon: {
+    list: {
+      width: '100%',
+      boxShadow: 'inset 0 0 0 0.1px rgb(255 126 95 / 0)',
+      transition: 'box-shadow 0.3s 0.1s ease-in-out',
+      '&:hover': {
+        cursor: 'pointer',
+        boxShadow: 'inset 500px 0 0 0 rgb(255 126 95 / 0.1)',
+        '& .MuiListItemText-root': {
+          color: 'white',
+        },
+        '& .MuiListItemIcon-root': {
+          color: 'white',
+        },
+        '&$selected': {
+          boxShadow: 'inset 500px 0 0 0 rgb(255 126 95 / 0.1)',
+          '& .MuiListItemText-root': {
+            color: 'white',
+          },
+          '& .MuiListItemIcon-root': {
+            color: 'white',
+          },
+        },
+      },
+      '&$selected': {
+        boxShadow: 'inset 500px 0 0 0 rgb(255 126 95 / 1)',
+        '& .MuiListItemText-root': {
+          color: 'white',
+        },
+        '& .MuiListItemIcon-root': {
+          color: 'white',
+        },
+      },
+    },
+    listItem: {
       '&&': {
-        minWidth: 40,
+        color: '#505050',
       },
     },
     logoSpotify: {
@@ -74,9 +137,11 @@ function Sidebar({ drawerWidth }: Props) {
         fontWeight: 1000,
       },
     },
-    selectedSong: {
-      height: '100px',
-    // backgroundColor: 'blue',
+    selected: {},
+    selectedList: {
+      height: '500px',
+      overflowY: 'scroll',
+      scrollbarColor: 'yellow',
     },
   });
 
@@ -89,7 +154,7 @@ function Sidebar({ drawerWidth }: Props) {
       classes={{ paper: classes.drawerPaper }}
       sx={{ backgroundColor: '#080808' }}
     >
-      <Box className={classes.navBox}>
+      <Box className={classes.sideBox}>
         <Box
           component="img"
           className={classes.logoSpotify}
@@ -101,18 +166,44 @@ function Sidebar({ drawerWidth }: Props) {
         />
         <List>
           {sideBarItem.map((item) => (
-            <ListItem key={item.text}>
-              <ListItemIcon className={classes.ListItemIcon}>{item.icon}</ListItemIcon>
-              <ListItemText
-                primary={item.text}
-                disableTypography
-                className={classes.drawerPaper}
-              />
-            </ListItem>
+            <div key={item.text}>
+              <ListItem
+                component={Link}
+                to={item.path}
+                selected={item.path === location.pathname}
+                classes={{ root: classes.list, selected: classes.selected }}
+              >
+                <ListItemIcon className={classes.listItem}>{item.icon}</ListItemIcon>
+                <ListItemText
+                  className={classes.listItem}
+                  primary={item.text}
+                  disableTypography
+                />
+              </ListItem>
+            </div>
           ))}
         </List>
       </Box>
-      <Box className={classes.selectedSong} />
+      <Box component="div" px={2}>
+        <Typography
+          variant="h5"
+          component="h1"
+          mb={2}
+          sx={{ fontWeight: '500', color: 'white' }}
+        >
+          Selected Song
+        </Typography>
+        <Box component="div" className={classes.selectedList}>
+          {selectedSong.map((item: ItemSong, index) => (
+            <SelectedSong
+              key={item.id}
+              index={index}
+              uri={item.uri}
+              data={item}
+            />
+          ))}
+        </Box>
+      </Box>
     </Drawer>
   );
 }

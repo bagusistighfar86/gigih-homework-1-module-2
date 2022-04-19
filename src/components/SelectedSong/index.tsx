@@ -1,36 +1,84 @@
 // Libraries
-import React from 'react';
-import { useAppSelector } from '../../redux/hooks';
+import React, { useEffect } from 'react';
+import { makeStyles } from '@mui/styles';
+import CheckBoxIcon from '@mui/icons-material/CheckBox';
+import { Box, Typography } from '@mui/material';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { setSelectedSong, getSelectedSong } from '../../redux/slices/songSlice';
 import { ItemSong } from '../../apiModel/InterfaceSong';
 
-// Components
-import Song from '../Song/index';
+type Props = {
+  uri: string;
+  index: number;
+  data: ItemSong;
+};
 
-function SelectedSong() {
+function SelectedSong({ index, uri, data }: Props) {
+  const dispatch = useAppDispatch();
+
   const selectedSong = useAppSelector((state) => state.song.selectedSong);
+
+  // eslint-disable-next-line react/no-unstable-nested-components
+  function IconSelectedSong() {
+    const selected = selectedSong.findIndex((item: ItemSong) => item.uri === uri);
+    if (selected !== -1) return <CheckBoxIcon />;
+    return '';
+  }
+
+  const handleSelectedSong = () => {
+    const selected = selectedSong.findIndex((item: ItemSong) => item.uri === uri);
+    if (selected > -1) {
+      const newSelectedSongs = selectedSong.filter((item: ItemSong) => item.uri !== uri);
+      dispatch(setSelectedSong(newSelectedSongs));
+    } else {
+      const newSelectedSongs = [...selectedSong, data];
+      dispatch(setSelectedSong(newSelectedSongs));
+    }
+    return null;
+  };
+
+  useEffect(() => {
+    dispatch(getSelectedSong());
+  }, []);
+
+  const useStyle = makeStyles({
+    selectedSong: {
+      color: 'white',
+      display: 'flex',
+      justifyContent: 'space-between',
+    },
+    selectedSongIcon: {
+      color: '#4caf50',
+      '&:hover': {
+        cursor: 'pointer',
+      },
+    },
+    songName: {
+      '&&': {
+        whiteSpace: 'nowrap',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
+      },
+    },
+  });
+  const classes = useStyle();
   return (
-    <div className="SelectedSong mb-5">
-      <h1 className="text-white">Selected Song</h1>
-      {selectedSong.length !== 0 && (
-        <div className="header-table mb-3 d-flex text-white">
-          <p className="index">#</p>
-          <p className="title">Title</p>
-          <p className="album">Album</p>
-          <p className="duration">Duration</p>
-          <p className="selectSong">Select Song</p>
-        </div>
-      )}
-      <div className="songMap">
-        {selectedSong.map((item: ItemSong, index) => (
-          <Song
-            key={item.id}
-            index={index}
-            uri={item.uri}
-            data={item}
-          />
-        ))}
-      </div>
-    </div>
+    <Box component="div" className={classes.selectedSong} mb={1}>
+      <Typography variant="body2" className={classes.songName}>
+        <Box component="span">
+          {index + 1}
+          .
+        </Box>
+        {index <= 9 && ' '}
+        {data.name}
+      </Typography>
+      <Box
+        className={classes.selectedSongIcon}
+        onClick={handleSelectedSong}
+      >
+        {IconSelectedSong()}
+      </Box>
+    </Box>
   );
 }
 

@@ -1,21 +1,11 @@
-import { AppBar, Toolbar, Box } from '@mui/material';
+import { Toolbar, Box } from '@mui/material';
 
 import { makeStyles } from '@mui/styles';
 import React from 'react';
-
+import { useAppSelector } from '../../redux/hooks';
+import Navbar from '../AppBar';
+import SearchResult from '../SearchResult';
 import Sidebar from '../Sidebar';
-
-import SearchBar from '../SearchBar/index';
-
-const useStyle = makeStyles({
-  root: {
-    display: 'flex',
-
-  },
-  page: {
-    width: '100%',
-  },
-});
 
 const drawerWidth = 240;
 
@@ -23,31 +13,32 @@ type Props = {
   children: React.ReactNode
 }
 function Layout({ children }: Props) {
+  const useStyle = makeStyles({
+    root: {
+      display: 'flex',
+      // background: 'rgb(31,31,31)',
+      height: '100vh',
+    },
+    page: {
+      background: 'linear-gradient(180deg, rgba(31,31,31,1) 0%, rgba(8,8,8,1) 100%);',
+      width: '100%',
+      overflowY: 'scroll',
+    },
+  });
+
   const classes = useStyle();
+  const search = useAppSelector((state) => state.search.search);
+  console.log('search', search);
   return (
     <Box component="div" className={classes.root}>
       {/* Appbar */}
-      <AppBar
-        position="fixed"
-        sx={{
-          width: `calc(100% - ${drawerWidth}px)`,
-          display: 'flex',
-          backgroundColor: '#181818',
-          height: 70,
-          justifyContent: 'center',
-        }}
-      >
-        <Toolbar sx={{ width: '100%', justifyContent: 'center' }}>
-          <SearchBar />
-        </Toolbar>
-      </AppBar>
-
+      <Navbar drawerWidth={drawerWidth} />
       {/* Sidebar */}
       <Sidebar drawerWidth={drawerWidth} />
-      <div className={classes.page}>
+      <Box component="div" className={classes.page} py={5} px={3}>
         <Toolbar />
-        { children }
-      </div>
+        {search === '' ? children : <SearchResult />}
+      </Box>
     </Box>
   );
 }
