@@ -18,17 +18,29 @@
     margin-right: 20px;
 }
 
+.selectIcon{
+    color: #43a047;
+}
+.selectIcon:hover{
+    color: #2e7d32;
+    cursor: pointer,
+}
+
+.deselectIcon{
+    color: #e53935;
+}
+.deselectIcon:hover{
+    color: #b71c1c;
+    cursor: pointer,
+}
+
 button.btn-select-song  {
-    background: #1ed760;
-    border-radius: 10px;
-    padding: 10px 20px;
     border: none;
-    transition: ease 0.3s;
+    background: none;
 }
 
 button.btn-select-song:hover  {
     cursor: pointer;
-    background: #17a047
 }
 
 .song{

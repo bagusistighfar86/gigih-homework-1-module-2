@@ -5,6 +5,8 @@ import React from 'react';
 import './song.css';
 
 // Components
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import formatFromMinutesSecond from '../../utils/formatFromMinutesSecond';
 import { setSelectedSong } from '../../redux/slices/songSlice';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
@@ -20,10 +22,10 @@ function Song({ uri, data, index }: Props) {
   const dispatch = useAppDispatch();
   const selectedSong = useAppSelector((state) => state.song.selectedSong);
 
-  const generateButtonText = () => {
+  const generateButtonSelect = () => {
     const selected = selectedSong.findIndex((item: ItemSong) => item.uri === uri);
-    if (selected !== -1) return 'Deselect';
-    return 'Select';
+    if (selected !== -1) return <HighlightOffIcon className="deselectIcon" sx={{ fontSize: '40px' }} />;
+    return <CheckCircleOutlineIcon className="selectIcon" sx={{ fontSize: '40px' }} />;
   };
 
   const handleSelect = () => {
@@ -48,12 +50,13 @@ function Song({ uri, data, index }: Props) {
         </div>
       </div>
       <div className="song-album">{data.album.name}</div>
-      <div className="duration">{formatFromMinutesSecond(data.duration_ms)}</div>
-      <div className="position-relative align-self-start mt-2">
-        <button className="text-white btn btn-select-song position-absolute" type="button" onClick={handleSelect}>
-          {generateButtonText()}
-        </button>
-      </div>
+      <div className="duration px-3">{formatFromMinutesSecond(data.duration_ms)}</div>
+      <button type="button" className="btn-select-song px-4" onClick={handleSelect}>
+        {generateButtonSelect()}
+      </button>
+      {/* <button className="btn-select-song" type="button" onClick={handleSelect}>
+        {generateButtonSelect()}
+      </button> */}
     </div>
   );
 }

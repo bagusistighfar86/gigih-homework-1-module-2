@@ -2,36 +2,32 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
-import UserEvent from '@testing-library/user-event';
-import SearchBar from '../components/AppBar/SearchBar/index';
-import store from '../redux/store';
-
-const renderWithUtils = (children) => render(<Provider store={store}>{children}</Provider>);
+import userEvent from '@testing-library/user-event';
+import SearchBar from '../components/AppBar/SearchBar';
+import { store } from '../redux/store';
 
 test('Renders with search input component', async () => {
-  renderWithUtils(<SearchBar />);
+  render(
+    <Provider store={store}>
+      <SearchBar />
+    </Provider>,
+  );
 
-  const inputElement = screen.getByPlaceholderText('Search Song...');
+  const inputElement = screen.getByPlaceholderText('Find Your Song');
 
   expect(inputElement).toBeInTheDocument();
 });
 
 test('value change input search component', () => {
-  renderWithUtils(<SearchBar />);
+  render(
+    <Provider store={store}>
+      <SearchBar />
+    </Provider>,
+  );
 
-  const inputElement = screen.getByPlaceholderText('Search Song...');
+  const inputElement = screen.getByPlaceholderText('Find Your Song');
 
-  UserEvent.type(inputElement, 'tulus');
+  userEvent.type(inputElement, 'Raisa');
 
-  expect(screen.getByDisplayValue('tulus')).toBeInTheDocument();
-});
-
-test('renders search button component', async () => {
-  renderWithUtils(<SearchBar />);
-
-  const buttonElement = screen.getByRole('button', {
-    name: /searchSongBtn/i,
-  });
-
-  expect(buttonElement).toBeInTheDocument();
+  expect(screen.getByDisplayValue('Raisa')).toBeInTheDocument();
 });

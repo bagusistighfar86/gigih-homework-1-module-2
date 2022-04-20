@@ -1,7 +1,7 @@
 // Libraries
 import React, { useEffect } from 'react';
 import { makeStyles } from '@mui/styles';
-import CheckBoxIcon from '@mui/icons-material/CheckBox';
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import { Box, Typography } from '@mui/material';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { setSelectedSong, getSelectedSong } from '../../redux/slices/songSlice';
@@ -21,7 +21,7 @@ function SelectedSong({ index, uri, data }: Props) {
   // eslint-disable-next-line react/no-unstable-nested-components
   function IconSelectedSong() {
     const selected = selectedSong.findIndex((item: ItemSong) => item.uri === uri);
-    if (selected !== -1) return <CheckBoxIcon />;
+    if (selected !== -1) return <HighlightOffIcon />;
     return '';
   }
 
@@ -48,8 +48,9 @@ function SelectedSong({ index, uri, data }: Props) {
       justifyContent: 'space-between',
     },
     selectedSongIcon: {
-      color: '#4caf50',
+      color: '#e53935',
       '&:hover': {
+        color: '#b71c1c',
         cursor: 'pointer',
       },
     },

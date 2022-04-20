@@ -85,7 +85,7 @@ function SearchBar() {
           type="text"
           value={search}
           onChange={handleChangeSearch}
-          placeholder="Search Song..."
+          placeholder="Find Your Song"
           inputProps={{ 'aria-label': 'searchSongBtn' }}
         />
       </Search>
