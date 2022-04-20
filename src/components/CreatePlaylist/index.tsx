@@ -107,6 +107,8 @@ function CreatePlaylist() {
             title: '',
             description: '',
           });
+          (document.getElementById('title') as HTMLInputElement).value = '';
+          (document.getElementById('description') as HTMLInputElement).value = '';
           dispatch(setSelectedSong([]));
           alert('Playlist is created!');
         }
