@@ -85,8 +85,8 @@ function SearchBar() {
           type="text"
           value={search}
           onChange={handleChangeSearch}
-          placeholder="Search"
-          inputProps={{ 'aria-label': 'search' }}
+          placeholder="Search Song..."
+          inputProps={{ 'aria-label': 'searchSongBtn' }}
         />
       </Search>
       {/* </form> */}

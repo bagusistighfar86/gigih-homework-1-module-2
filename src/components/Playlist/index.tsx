@@ -22,7 +22,7 @@ function Playlist({ data }: Props) {
   const addSongsToPlaylist = async (playlistId: PlaylistItem['id']) => {
     try {
       const res = await axios.post(`https://api.spotify.com/v1/playlists/${playlistId}/tracks?access_token=${accessToken}`, {
-        uris: selectedSong.map((song: ItemSong) => song.uri),
+        uris: selectedSong?.map((song: ItemSong) => song.uri),
       });
       console.log(res);
       return res;

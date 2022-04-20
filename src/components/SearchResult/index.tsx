@@ -26,7 +26,7 @@ function SearchResult() {
               <p className="selectSong">Select Song</p>
             </div>
             <div className="songMap">
-              {dataSearch.map((item: ItemSong, index) => (
+              {dataSearch?.map((item: ItemSong, index) => (
                 <Song
                   key={item.id}
                   index={index}

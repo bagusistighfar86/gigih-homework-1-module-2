@@ -47,7 +47,7 @@ function ListPlaylist() {
         </div>
       </div>
       <div className="row playlistMap">
-        {playlistsData.map((item: PlaylistItem) => (
+        {playlistsData?.map((item: PlaylistItem) => (
           // console.log(item)
           item.tracks.total >= 0 && (
           <Playlist

@@ -72,7 +72,7 @@ function CreatePlaylist() {
     try {
       console.log(playlistId);
       const res = await axios.post(`https://api.spotify.com/v1/playlists/${playlistId}/tracks?access_token=${accessToken}`, {
-        uris: selectedSong.map((song: ItemSong) => song.uri),
+        uris: selectedSong?.map((song: ItemSong) => song.uri),
       });
       console.log(res);
       return res;

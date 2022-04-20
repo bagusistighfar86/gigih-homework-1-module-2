@@ -87,3 +87,7 @@ export interface SongResponse {
   previous?: string;
   total: number;
 }
+
+export interface SearchSongResponse {
+  tracks: SongResponse;
+}

@@ -165,7 +165,7 @@ function Sidebar({ drawerWidth }: Props) {
           src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_RGB_White.png"
         />
         <List>
-          {sideBarItem.map((item) => (
+          {sideBarItem?.map((item) => (
             <div key={item.text}>
               <ListItem
                 component={Link}
@@ -194,7 +194,7 @@ function Sidebar({ drawerWidth }: Props) {
           Selected Song
         </Typography>
         <Box component="div" className={classes.selectedList}>
-          {selectedSong.map((item: ItemSong, index) => (
+          {selectedSong?.map((item: ItemSong, index) => (
             <SelectedSong
               key={item.id}
               index={index}
