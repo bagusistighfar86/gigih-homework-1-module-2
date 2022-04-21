@@ -129,7 +129,7 @@ function CreatePlaylist() {
       <form onSubmit={handleSubmitPlaylist}>
         <div className="form-group">
           <label htmlFor="title" className="text-white">Title</label>
-          <input type="text" id="title" name="title" placeholder="Enter playlist tittle" onChange={handleChangeForm} />
+          <input type="text" id="title" name="title" placeholder="Enter playlist tittle" onChange={handleChangeForm} required />
           {errors.title && <p className="error-title-msg text-danger">Minimum 10 huruf</p>}
         </div>
         <div className="form-group">
