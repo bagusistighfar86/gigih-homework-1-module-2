@@ -1,6 +1,8 @@
 // Libraries
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 // CSS
 import './ListPlaylist.css';
@@ -34,8 +36,20 @@ function ListPlaylist() {
     getListPlaylist();
   }, [setPlaylists]);
 
+  useEffect(() => {
+    AOS.init({
+      duration: 1500,
+      easing: 'ease',
+      delay: 0,
+    });
+  }, []);
+
   return (
-    <div className="ListPlaylist mb-5">
+    <div
+      className="ListPlaylist mb-5"
+      data-aos="fade-up"
+      data-aos-delay="200"
+    >
       <div className="row headerListPlaylist justify-content-between">
         <div className="col-2">
           <h1 className="text-white">List Playlist</h1>

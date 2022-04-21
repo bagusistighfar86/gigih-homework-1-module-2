@@ -30,7 +30,7 @@ function LoginPage() {
 
   const AUTH_URL = 'https://accounts.spotify.com/authorize';
   const spotifyClientId = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
-  const redirectUri = 'https://spotify-gigih-fp.vercel.app/';
+  const redirectUri = 'http://localhost:3000/';
   const scopes = 'user-read-private user-read-email playlist-modify-private user-library-read user-library-modify';
   const url = `${AUTH_URL}?client_id=${spotifyClientId}&redirect_uri=${redirectUri}&scope=${scopes}&response_type=token&show_dialog=true`;
 

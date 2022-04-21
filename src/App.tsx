@@ -16,6 +16,8 @@ import Home from './pages/home/index';
 import LoginPage from './pages/loginPage';
 import CreatePlaylist from './components/CreatePlaylist';
 import ListPlaylist from './components/ListPlaylist';
+import Account from './components/AccountProfile';
+import Settings from './components/Settings';
 
 function App() {
   if (document.readyState === 'complete') {
@@ -43,6 +45,8 @@ function App() {
               <PrivateRoute path="/create-playlist" comp={CreatePlaylist} />
               <PrivateRoute path="/home" comp={Home} />
               <PrivateRoute path="/list-playlist" comp={ListPlaylist} />
+              <PrivateRoute path="/account" comp={Account} />
+              <PrivateRoute path="/setting" comp={Settings} />
             </Layout>
           </Switch>
         </Router>

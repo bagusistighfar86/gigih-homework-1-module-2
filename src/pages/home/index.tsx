@@ -28,7 +28,7 @@ function Home() {
           <div
             className="upgrade-box bg-danger text-white d-flex align-items-center"
             data-aos="fade-up"
-            data-aos-delay="100"
+            data-aos-delay="200"
           >
             <div className="upgrade-box-img w-50">
               <img
