@@ -34,7 +34,7 @@ function ListPlaylist() {
 
   useEffect(() => {
     getListPlaylist();
-  }, [setPlaylists]);
+  }, []);
 
   useEffect(() => {
     AOS.init({
@@ -53,11 +53,6 @@ function ListPlaylist() {
       <div className="row headerListPlaylist justify-content-between">
         <div className="col-2">
           <h1 className="text-white">List Playlist</h1>
-        </div>
-        <div className="col-2 text-end pe-4">
-          <button className="btn btn-get-playlist text-white" type="button" onClick={getListPlaylist}>
-            Get Playlist
-          </button>
         </div>
       </div>
       <div className="row playlistMap">
