@@ -1,11 +1,11 @@
 // Libraries
-import React, { useEffect } from 'react';
+import React from 'react';
 import { makeStyles } from '@mui/styles';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import { Box, Typography } from '@mui/material';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
-import { setSelectedSong, getSelectedSong } from '../../redux/slices/songSlice';
-import { ItemSong } from '../../apiModel/InterfaceSong';
+import { setSelectedSong } from '../../redux/slices/songSlice';
+import { ItemSong } from '../../typeInterface/InterfaceSong';
 
 type Props = {
   uri: string;
@@ -36,10 +36,6 @@ function SelectedSong({ index, uri, data }: Props) {
     }
     return null;
   };
-
-  useEffect(() => {
-    dispatch(getSelectedSong());
-  }, []);
 
   const useStyle = makeStyles({
     selectedSong: {

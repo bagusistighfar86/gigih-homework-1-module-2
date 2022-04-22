@@ -10,8 +10,14 @@
     flex-basis: 700px;
 }
 
+.data-added{
+    flex-basis: 120px;
+    text-align: center;
+}
+
 .duration{
     flex-basis: 150px;
+    text-align: center;
 }
 
 .song-img {
@@ -34,7 +40,7 @@
     cursor: pointer,
 }
 
-button.btn-select-song, button.btn-song-liked  {
+button.btn-select-song  {
     border: none;
     background: none;
 }

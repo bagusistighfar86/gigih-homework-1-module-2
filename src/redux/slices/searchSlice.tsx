@@ -2,16 +2,16 @@
 // Libraries
 import { createSlice } from '@reduxjs/toolkit';
 import type { RootState } from '../store';
-import { ItemSong } from '../../apiModel/InterfaceSong';
+import { ItemSong } from '../../typeInterface/InterfaceSong';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 interface SearchState {
   search: string,
-  dataSearch: ItemSong,
+  dataSearch: ItemSong[],
 }
 
 // Define the initial state using that type
-const initialState = {
+const initialState: SearchState = {
   search: '',
   dataSearch: [],
 };

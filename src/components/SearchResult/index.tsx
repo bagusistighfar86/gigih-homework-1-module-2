@@ -1,7 +1,7 @@
 // Libraries
 import React from 'react';
 import { useAppSelector } from '../../redux/hooks';
-import { ItemSong } from '../../apiModel/InterfaceSong';
+import { ItemSong } from '../../typeInterface/InterfaceSong';
 
 // CSS
 import './searchResult.css';
@@ -23,7 +23,6 @@ function SearchResult() {
               <p className="title">Title</p>
               <p className="album">Album</p>
               <p className="duration">Duration</p>
-              <p className="selectSong">Select Song</p>
             </div>
             <div className="songMap">
               {dataSearch?.map((item: ItemSong, index) => (
@@ -31,6 +30,7 @@ function SearchResult() {
                   key={item.id}
                   index={index}
                   uri={item.uri}
+                  ids={item.id}
                   data={item}
                 />
               ))}

@@ -36,7 +36,7 @@ test('Test Search Song', async () => {
 
   const inputElement = screen.getByPlaceholderText('Find Your Song');
 
-  userEvent.type(inputElement, 'Raisa');
+  userEvent.type(inputElement, 'Tulus');
 
   await screen.findAllByText('Tulus');
 });

@@ -8,6 +8,7 @@ import {
 import HomeIcon from '@mui/icons-material/Home';
 import PlaylistPlayIcon from '@mui/icons-material/PlaylistPlay';
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
+import FavoriteTwoToneIcon from '@mui/icons-material/FavoriteTwoTone';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { createTheme } from '@mui/system';
@@ -15,7 +16,7 @@ import { makeStyles } from '@mui/styles';
 import { Link, useLocation } from 'react-router-dom';
 import SelectedSong from '../SelectedSong';
 import { useAppSelector } from '../../redux/hooks';
-import { ItemSong } from '../../apiModel/InterfaceSong';
+import { ItemSong } from '../../typeInterface/InterfaceSong';
 
 const theme = createTheme();
 const sideBarItem = [
@@ -33,6 +34,11 @@ const sideBarItem = [
     text: 'List Playlist',
     icon: <PlaylistPlayIcon />,
     path: '/list-playlist',
+  },
+  {
+    text: 'Liked Songs',
+    icon: <FavoriteTwoToneIcon />,
+    path: '/liked-songs',
   },
   {
     text: 'Account',

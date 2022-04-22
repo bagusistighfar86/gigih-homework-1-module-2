@@ -9,8 +9,8 @@ import './ListPlaylist.css';
 
 // Components
 import { useAppSelector } from '../../redux/hooks';
-import Playlist from '../Playlist';
-import { PlaylistItem } from '../../apiModel/InterfacePlaylist';
+import Playlist from '../../components/Playlist';
+import { PlaylistItem } from '../../typeInterface/InterfacePlaylist';
 
 function ListPlaylist() {
   const accessToken = useAppSelector((state) => state.token.accessToken);

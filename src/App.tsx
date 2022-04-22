@@ -14,10 +14,11 @@ import './App.css';
 // Import Component
 import Home from './pages/home/index';
 import LoginPage from './pages/loginPage';
-import CreatePlaylist from './components/CreatePlaylist';
-import ListPlaylist from './components/ListPlaylist';
-import Account from './components/AccountProfile';
-import Settings from './components/Settings';
+import CreatePlaylist from './pages/CreatePlaylist';
+import ListPlaylist from './pages/ListPlaylist';
+import Account from './pages/AccountProfile';
+import Settings from './pages/Settings';
+import LikedSongs from './pages/LikedSongs';
 
 function App() {
   if (document.readyState === 'complete') {
@@ -45,6 +46,7 @@ function App() {
               <PrivateRoute path="/create-playlist" comp={CreatePlaylist} />
               <PrivateRoute path="/home" comp={Home} />
               <PrivateRoute path="/list-playlist" comp={ListPlaylist} />
+              <PrivateRoute path="/liked-songs" comp={LikedSongs} />
               <PrivateRoute path="/account" comp={Account} />
               <PrivateRoute path="/setting" comp={Settings} />
             </Layout>

@@ -1,14 +1,14 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable no-unused-vars */
 // Libraries
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { setSelectedSong } from '../../redux/slices/songSlice';
-import { Profile } from '../../apiModel/InterfaceProfile';
-import { PlaylistItem } from '../../apiModel/InterfacePlaylist';
-import { ItemSong } from '../../apiModel/InterfaceSong';
+import { Profile } from '../../typeInterface/InterfaceProfile';
+import { PlaylistItem } from '../../typeInterface/InterfacePlaylist';
+import { ItemSong } from '../../typeInterface/InterfaceSong';
 
 // CSS
 import './createPlaylist.css';
@@ -52,15 +52,17 @@ function CreatePlaylist() {
 
   const createPlaylist = async (userId: Profile) => {
     try {
-      const res = await axios.post(`https://api.spotify.com/v1/users/${userId}/playlists?access_token=${accessToken}`, {
-        name: playlistForm.title,
-        public: false,
-        collaborative: false,
-        description: playlistForm.description,
-      });
-      if (res) {
-        console.log(res.data);
-        return res?.data?.id;
+      if (!errors.title) {
+        const res = await axios.post(`https://api.spotify.com/v1/users/${userId}/playlists?access_token=${accessToken}`, {
+          name: playlistForm.title,
+          public: false,
+          collaborative: false,
+          description: playlistForm.description,
+        });
+        if (res) {
+          console.log(res.data);
+          return res?.data?.id;
+        }
       }
     } catch (err) {
       console.log(err);

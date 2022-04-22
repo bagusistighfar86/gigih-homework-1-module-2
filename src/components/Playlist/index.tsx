@@ -7,8 +7,8 @@ import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import './playlist.css';
 import { setSelectedSong } from '../../redux/slices/songSlice';
 
-import { ItemSong } from '../../apiModel/InterfaceSong';
-import { PlaylistItem } from '../../apiModel/InterfacePlaylist';
+import { ItemSong } from '../../typeInterface/InterfaceSong';
+import { PlaylistItem } from '../../typeInterface/InterfacePlaylist';
 
 type Props = {
   data: PlaylistItem;

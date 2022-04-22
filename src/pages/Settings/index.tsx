@@ -37,7 +37,7 @@ function Settings() {
       data-aos-delay="0"
     >
       <Typography variant="h1" mb={2}>
-        User Profile
+        Settings
       </Typography>
 
       <Typography variant="body2">
